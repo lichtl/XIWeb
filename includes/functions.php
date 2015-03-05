@@ -214,7 +214,9 @@ function getCharacterMaxExp($charid) {
   $strSQL = "SELECT exp FROM exp_base WHERE level = :level";
   $statement = $db->prepare($strSQL);
 
-  $statement->bindValue(':level',getJobLevel($charid,getCharMJob($charid)));
+  $level = getJobLevel($charid,getCharMJob($charid)) +1;
+  
+  $statement->bindValue(':level',$level);
 
   if (!$statement->execute()) {
     var_dump( $statement->errorInfo() );

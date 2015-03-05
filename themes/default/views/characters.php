@@ -102,7 +102,7 @@ else {
               <div class="uk-text-center"><img src="http://vignette3.wikia.nocookie.net/ffxi/images/3/33/Hm2b.jpg" /></div>
   ';
   $output .= '
-              <h3 class="uk-panel-title uk-text-center">'.strtoupper(getCharMJob($char['charid'])).getJobLevel($char['charid'],getCharMJob($char['charid'])).(!empty(getCharSJob($char['charid'])) ? '/'.strtoupper(getCharSJob($char['charid'])).getJobLevel($char['charid'],getCharSJob($char['charid'])).'' : '') .'</h3><br />
+              <h3 class="uk-panel-title uk-text-center">'.strtoupper(getCharMJob($char['charid'])).getJobLevel($char['charid'],getCharMJob($char['charid'])).(getCharSJob($char['charid']) == true) ? '/'.strtoupper(getCharSJob($char['charid'])).getJobLevel($char['charid'],getCharSJob($char['charid'])).'' : '') .'</h3><br />
               <div class="uk-grid">
                 <div class="uk-width-1-2">
                   <div class="uk-text-bold">HP</div>
