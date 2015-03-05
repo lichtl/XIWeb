@@ -57,4 +57,30 @@ $skill_ids = array(
   'syn' => 57,
   'rid' => 58,
 );
+
+$jobs = array(
+  0 => '',     // None
+  1 => 'war',  // Warrior
+  2 => 'mnk',  // Monk
+  3 => 'whm',  // White Mage
+  4 => 'blm',  // Black Mage
+  5 => 'rdm',  // Red mage
+  6 => 'thf',  // Thief
+  7 => 'pld',  // Paladin
+  8 => 'drk',  // Dark Knight
+  9 => 'bst',  // Beastmaster
+  10 => 'brd', // Bard
+  11 => 'rng', // Ranger
+  12 => 'sam', // Samurai
+  13 => 'nin', // Ninja
+  14 => 'drg', // Dragoon
+  15 => 'smn', // Summoner
+  16 => 'blu', // Blue Mage
+  17 => 'cor', // Corsair
+  18 => 'pup', // Puppetmaster
+  19 => 'dnc', // Dancer
+  20 => 'sch', // Scholar
+  21 => 'geo', // Geomancer
+  22 => 'run', // Rune fencer
+);
 ?>

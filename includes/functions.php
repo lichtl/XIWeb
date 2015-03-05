@@ -253,18 +253,7 @@ function getTitle($charid) {
 }
 
 function getCharMJob($charid) {
-  global $db;
-  
- $jobs = array(
-    0 => '',
-    1 => 'war',
-    2 => 'mnk',
-    3 => 'whm',
-    4 => 'blm',
-    5 => 'rdm',
-    6 => 'thf',
-    7 => 'pld'
-  );
+  global $db,$jobs;
   
   $strSQL = "SELECT mjob FROM char_stats WHERE charid = :charID";
   $statement = $db->prepare($strSQL);
@@ -286,18 +275,7 @@ function getCharMJob($charid) {
 }
 
 function getCharSJob($charid) {
-  global $db;
-  
- $jobs = array(
-    0 => '',
-    1 => 'war',
-    2 => 'mnk',
-    3 => 'whm',
-    4 => 'blm',
-    5 => 'rdm',
-    6 => 'thf',
-    7 => 'pld'
-  );
+  global $db,$jobs;
   
   $strSQL = "SELECT sjob FROM char_stats WHERE charid = :charID";
   $statement = $db->prepare($strSQL);
