@@ -1,0 +1,434 @@
+<?php
+
+if (!empty($_SESSION['errors'])) {
+  $output .= '
+   <div class="uk-alert uk-alert-danger uk-width-1-2 uk-align-center">
+      <i class="uk-icon uk-icon-times"></i> '.$lang['error']['general']['error_message'].'
+      <ul>
+  ';
+  foreach ($_SESSION['errors'] as $error) {
+    $output .= '
+        <li>'.$error.'</li>
+    ';
+  }
+  $output .= '
+      </ul>
+    </div>
+';
+}
+else {
+  $output .= '    <br />';
+}
+
+if ($page == 'characters') {
+  $output .= '
+  <div class="uk-panel uk-panel-box uk-align-center uk-width-1-2">
+      <h3 class="uk-panel-title"><i class="uk-icon uk-icon-lock"></i> Character List</h3>
+      <hr class="uk-panel-divider" />
+      <i class="uk-icon uk-icon-plus"></i> <a href="characterCreate.html">Create Character</a>
+      <hr class="uk-panel-divider" />
+      <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+        <table class="uk-table uk-table-hover uk-table-striped uk-text-small">
+          <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th>Character Name</th>
+                <th>Main Job</th>
+                <th>Support Job</th>
+                <th>Current Location</th>
+                <th>Actions</th>
+              </tr>
+          </thead>
+          <tfoot>
+              <tr>
+                <td colspan=6>
+                 <span>In order for you or others to view your characters, you must link (<i class="uk-icon uk-icon-link"></i>) them to your account</span><br />
+                 <span>The character highlighted in <strong>bold</strong> is your favorite character, and will be used as default in all transactions.</span>
+                </td>
+              </tr>
+          </tfoot>
+          <tbody>
+  ';
+  if (!empty($characters)) {
+    foreach ($characters as $char) {
+      $output .= '
+              <tr class="uk-text-bold">
+                  <td><i class="uk-icon uk-icon-carat-up"></i></td>
+                  <td><a href="characters.php?id='.$char['charid'].'">'.$char['charname'].'</a></td>
+                  <td>'.getJobLevel($char['charid'],getCharMJob($char['charid'])).strtoupper(getCharMJob($char['charid'])).'</td>
+                  <td>'.getJobLevel($char['charid'],getCharSJob($char['charid'])).strtoupper(getCharSJob($char['charid'])).'</td>
+                  <td>'.getZoneName(getCharacterZone($char['charid'])).'</td>
+                  <td><i class="uk-icon uk-icon-edit uk-text-warning"></i> | <i class="uk-icon uk-icon-link uk-text-primary"></i> | <i class="uk-icon uk-icon-times uk-text-danger"></i></td>
+              </tr>
+      ';
+    }
+  }
+  else {
+    $output .= '
+              <tr>
+                <td colspan=6>No characters</td>
+              </tr>
+    ';
+  }
+  $output .= '
+          </tbody>
+        </table>
+      </div>
+    </div>
+';
+}
+else {
+  $char = $character[0];
+  $output .= '
+  <div class="uk-panel uk-panel-box uk-align-center uk-width-1-2">
+      <h3 class="uk-panel-title"><i class="uk-icon uk-icon-user"></i> Character Sheet - Character1</h3>
+      <hr class="uk-panel-divider" />
+      <ul class="uk-tab uk-width-1-1" data-uk-tab data-uk-switcher="{connect:\'#my-id\'}">
+        <li><a href="#">Character</a></li>
+        <li><a href="#">Stats</a></li>
+        <li><a href="#">Reputation</a></li>
+      </ul>
+      
+      <div class="uk-panel uk-panel-box" style="border-top: 0px; border-top-left-radius: 0px; border-top-right-radius: 0px;">
+        <ul id="my-id" class="uk-switcher">
+          <li>
+            <br />
+            <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+              <h3 class="uk-panel-title"><i class="uk-icon uk-icon-user"></i> '.$char['charname'].' - <em class="uk-text-muted">'.getTitle($char['charid']).'</em></h3>
+              <hr class="uk-panel-divider" />
+  ';
+  // Need to generate the code to make the correct image display here based on the characters race/gender and face/hair combination.
+  $output .= '
+              <div class="uk-text-center"><img src="http://vignette3.wikia.nocookie.net/ffxi/images/3/33/Hm2b.jpg" /></div>
+  ';
+  $output .= '
+              <h3 class="uk-panel-title uk-text-center">'.strtoupper(getCharMJob($char['charid'])).getJobLevel($char['charid'],getCharMJob($char['charid'])).(!empty(getCharSJob($char['charid'])) ? '/'.strtoupper(getCharSJob($char['charid'])).getJobLevel($char['charid'],getCharSJob($char['charid'])).'' : '') .'</h3><br />
+              <div class="uk-grid">
+                <div class="uk-width-1-2">
+                  <div class="uk-text-bold">HP</div>
+                  <div class="uk-progress uk-progress-striped uk-active uk-progress-success">
+                    <div class="uk-progress-bar" style="width: 100%;">'.getCharacterHP($char['charid']).'</div>
+                  </div>
+                </div>
+                <div class="uk-width-1-2">
+                  <div class="uk-text-bold">MP</div>
+                  <div class="uk-progress uk-progress-striped uk-active uk-progress-primary">
+                    <div class="uk-progress-bar" style="width: 100%;">'.getCharacterHP($char['charid']).'</div>
+                  </div>
+                </div>
+              </div>
+              <div class="uk-text-bold" style="padding-top: 10px;">Experience</div>
+              <div class="uk-progress uk-progress-striped uk-active uk-progress-warning">
+                <div class="uk-progress-bar" style="width: 100%;">'.getCharacterExp($char['charid'],getCharMJob($char['charid'])).'/'.getCharacterMaxExp($char['charid']).'</div>
+              </div>
+            </div>
+            <br />
+            <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+              <h3 class="uk-panel-title"><i class="uk-icon uk-icon-shield"></i> Equipment</h3>
+              <hr class="uk-panel-divider" />
+              <div class="uk-panel uk-text-center">
+                <img src="http://static.ffxiah.com/images/eq1.gif" /><img src="http://static.ffxiah.com/images/eq2.gif" /><img src="http://static.ffxiah.com/images/eq3.gif" /><img src="http://static.ffxiah.com/images/eq4.gif" /><br />
+                <img src="http://static.ffxiah.com/images/eq5.gif" /><img src="http://static.ffxiah.com/images/eq6.gif" /><img src="http://static.ffxiah.com/images/eq7.gif" /><img src="http://static.ffxiah.com/images/eq8.gif" /><br />
+                <img src="http://static.ffxiah.com/images/eq9.gif" /><img src="http://static.ffxiah.com/images/eq10.gif" /><img src="http://static.ffxiah.com/images/eq11.gif" /><img src="http://static.ffxiah.com/images/eq12.gif" /><br />
+                <img src="http://static.ffxiah.com/images/eq13.gif" /><img src="http://static.ffxiah.com/images/eq14.gif" /><img src="http://static.ffxiah.com/images/eq15.gif" /><img src="http://static.ffxiah.com/images/eq16.gif" /><br />
+              </div>
+            </div>
+            <br />
+            <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+              <h3 class="uk-panel-title"><i class="uk-icon uk-icon-briefcase"></i> Storage</h3>
+              <hr class="uk-panel-divider" />
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Inventory:</span> '.getCharacterInventory($char['charid'],'inventory').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Mog Satchel:</span> '.getCharacterInventory($char['charid'],'satchel').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Mog Locker:</span> '.getCharacterInventory($char['charid'],'locker').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Mog Safe:</span> '.getCharacterInventory($char['charid'],'safe').'</div>
+              </div>
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Case:</span> '.getCharacterInventory($char['charid'],'case').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Mog Sack:</span> '.getCharacterInventory($char['charid'],'sack').'</div>
+                <div class="uk-width-1-4">&nbsp;</div>
+                <div class="uk-width-1-4">&nbsp;</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <br />
+            <div class="uk-panel">
+              <br />
+            <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+              <h3 class="uk-panel-title"><i class="uk-icon uk-icon-graduation-cap"></i> Jobs</h3>
+              <hr class="uk-panel-divider" />
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Warrior:</span> '.getJobLevel($char['charid'],'war').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Monk:</span> '.getJobLevel($char['charid'],'mnk').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">White Mage:</span> '.getJobLevel($char['charid'],'whm').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Black Mage:</span> '.getJobLevel($char['charid'],'blm').'</div>
+              </div>
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Red Mage:</span> '.getJobLevel($char['charid'],'rdm').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Thief:</span> '.getJobLevel($char['charid'],'thf').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Paladin:</span> '.getJobLevel($char['charid'],'pld').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Dark Knight:</span> '.getJobLevel($char['charid'],'drk').'</div>
+              </div>
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Beastmaster:</span> '.getJobLevel($char['charid'],'bst').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Bard:</span> '.getJobLevel($char['charid'],'brd').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Ranger:</span> '.getJobLevel($char['charid'],'rng').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Samurai:</span> '.getJobLevel($char['charid'],'sam').'</div>
+              </div>
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Ninja:</span> '.getJobLevel($char['charid'],'nin').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Dragoon:</span> '.getJobLevel($char['charid'],'drg').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Summoner:</span> '.getJobLevel($char['charid'],'smn').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Blue Mage:</span> '.getJobLevel($char['charid'],'blu').'</div>
+              </div>
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Corsair:</span> '.getJobLevel($char['charid'],'cor').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Monk:</span> '.getJobLevel($char['charid'],'mnk').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Puppetmaster:</span> '.getJobLevel($char['charid'],'pup').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Dancer:</span> '.getJobLevel($char['charid'],'dnc').'</div>
+              </div>
+              <div class="uk-grid uk-text-small">
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Scholar:</span> '.getJobLevel($char['charid'],'sch').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Geomancer:</span> '.getJobLevel($char['charid'],'geo').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Rune Fencer:</span> '.getJobLevel($char['charid'],'run').'</div>
+                  <div class="uk-width-1-4">&nbsp;</div>
+                </div>
+            </div>
+            <br />
+            <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+              <h3 class="uk-panel-title"><i class="uk-icon uk-icon-shield"></i> Combat Skills</h3>
+              <hr class="uk-panel-divider" />
+              <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon uk-icon-gavel"></i> Weapon Skills</h3>
+                <hr class="uk-panel-divider" />
+                <div class="uk-grid uk-text-small">
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Axe:</span> 75</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Great Axe:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Club:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Dagger:</span> 0</div>
+                </div>
+                <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Hand-to-Hand:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Katana:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Great Katana:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Polearm:</span> 0</div>
+                </div>
+                <div class="uk-grid uk-text-small">
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Scythe:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Staff:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Sword:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Great Sword:</span> 0</div>
+                </div>
+              </div>
+              <br />
+              <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon uk-icon-bullseye"></i> Ranged Skills</h3>
+                <hr class="uk-panel-divider" />
+                <div class="uk-grid uk-align-center uk-text-small">
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Archery:</span> 75</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Marksmanship:</span> 0</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Throwing:</span> 0</div>
+                </div>
+              </div>
+              <br />
+              <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon uk-icon-shield"></i> Defensive Skills</h3>
+                <hr class="uk-panel-divider" />
+                <div class="uk-grid uk-text-small">
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Evasion:</span> 75</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Guarding:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Parrying:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Shield:</span> 0</div>
+                </div>
+              </div>
+              <br />
+              <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon uk-icon-flask"></i> Magic Skills</h3>
+                <hr class="uk-panel-divider" />
+                <div class="uk-grid uk-text-small">
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Blue:</span> 75</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Dark:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Divine:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Elemental:</span> 0</div>
+                </div>
+                <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Enfeebling:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Enhancing:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Healing:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Summoning:</span> 0</div>
+                </div>
+                <div class="uk-grid uk-text-small">
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Ninjutsu:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Singing:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">String:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Wind:</span> 0</div>
+                </div>
+                <div class="uk-grid uk-text-small">
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Geomancy:</span> 75</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Handbell:</span> 0</div>
+                  <div class="uk-width-1-4">&nbsp;</div>
+                  <div class="uk-width-1-4">&nbsp;</div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+              <h3 class="uk-panel-title"><i class="uk-icon uk-icon-cutlery"></i> Crafting Skills</h3>
+              <hr class="uk-panel-divider" />
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Alchemy:</span> 75</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Bonecraft:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Clothcraft:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Cooking:</span> 0</div>
+              </div>
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Fishing:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Goldsmithing:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Leathercraft:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Smithing:</span> 0</div>
+              </div>
+              <div class="uk-grid uk-text-small">
+                <div class="uk-width-1-4"><span class="uk-text-bold">Woodworking:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Synergy:</span> 0</div>
+                <div class="uk-width-1-4">&nbsp;</div>
+                <div class="uk-width-1-4">&nbsp;</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <br />
+            <div class="uk-panel">
+              <br />
+            <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+              <h3 class="uk-panel-title"><i class="uk-icon uk-icon-signal"></i> Reputation</h3>
+              <hr class="uk-panel-divider" />
+              <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon uk-icon-wifi"></i> Ranks</h3>
+                <hr class="uk-panel-divider" />
+                <div class="uk-grid uk-align-center uk-text-small">
+                  <div class="uk-width-1-3"><span class="uk-text-bold">San D\'Oria:</span> 75</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Bastok:</span> 0</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Windurst:</span> 0</div>
+                </div>
+              </div>
+              <br />
+              <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon uk-icon-signal"></i> Fame</h3>
+                <hr class="uk-panel-divider" />
+                <div class="uk-grid uk-align-center uk-text-small">
+                  <div class="uk-width-1-5"><span class="uk-text-bold">San D\'Oria:</span> 75</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">Bastok:</span> 0</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">Windurst:</span> 0</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">Norg:</span> 0</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">Jeuno:</span> 0</div>
+                </div>
+              </div>
+            </div>  
+          </li>
+        </ul>  
+      </div>
+    </div>
+    
+    <!-- This is the modal -->
+    <div id="my-modal" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="uk-panel">
+              <div class="uk-panel-title">Friend 1</div>
+              <hr class="uk-panel-divider" />
+              <h3 class="uk-panel-title uk-text-right">You</h3>
+              <div class="uk-panel uk-panel-box uk-panel-box-primary uk-text-right">
+                Hey there!
+              </div>
+              <br />
+              <h3 class="uk-panel-title">Friend 1</h3>
+              <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-left">
+                Hi! Thanks for contacting me!
+                
+                What is up with you ?
+              </div>
+              <br />
+              <div class="uk-panel uk-width-1-1 uk-align-left">
+                <form class="uk-form-horizontal">
+                  <div class="uk-form-row">
+                    <div style="width: 100%;"><input type="text" placeholder="username or email" style="width: 90%;" /><button style="width: 10%;">Send</button></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- This is the off-canvas sidebar -->
+    <div id="my-id" class="uk-offcanvas">
+      <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
+      <div class="uk-panel">
+        <h3 class="uk-panel-title">Online Friends (1)</h3>
+        <span><a href="#" class="uk-text-primary"><i class="uk-icon uk-icon-user-plus"></i> Add friend</a></span>
+        <hr class="uk-panel-divider" />
+        <i class="uk-icon uk-icon-toggle-on uk-text-success"></i> <a href="#my-modal"  data-uk-modal>Friend 1</a> <i class="uk-icon uk-icon-times uk-text-danger"></i>
+        <hr class="uk-panel-divider" />
+        <h3 class="uk-panel-title">Offline Friends (4)</h3>
+        <hr class="uk-panel-divider" />
+        <em class="uk-text-muted"><i class="uk-icon uk-icon-toggle-off"></i> Friend 2 <i class="uk-icon uk-icon-times uk-text-danger"></i></em><br />
+        <em class="uk-text-muted"><i class="uk-icon uk-icon-toggle-off"></i> Friend 3 <i class="uk-icon uk-icon-times uk-text-danger"></i></em><br />
+        <em class="uk-text-muted"><i class="uk-icon uk-icon-toggle-off"></i> Friend 4 <i class="uk-icon uk-icon-times uk-text-danger"></i></em><br />
+        <em class="uk-text-muted"><i class="uk-icon uk-icon-toggle-off"></i> Friend 5 <i class="uk-icon uk-icon-times uk-text-danger"></i></em><br />
+        <hr class="uk-panel-divider" />
+      </div>
+    </div>
+  ';
+}
+$output .= '
+    
+    <!-- This is the modal -->
+    <div id="my-modal" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="uk-panel">
+              <div class="uk-panel-title">Friend 1</div>
+              <hr class="uk-panel-divider" />
+              <h3 class="uk-panel-title uk-text-right">You</h3>
+              <div class="uk-panel uk-panel-box uk-panel-box-primary uk-text-right">
+                Hey there!
+              </div>
+              <br />
+              <h3 class="uk-panel-title">Friend 1</h3>
+              <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-left">
+                Hi! Thanks for contacting me!
+                
+                What is up with you ?
+              </div>
+              <br />
+              <div class="uk-panel uk-width-1-1 uk-align-left">
+                <form class="uk-form-horizontal">
+                  <div class="uk-form-row">
+                    <div style="width: 100%;"><input type="text" placeholder="username or email" style="width: 90%;" /><button style="width: 10%;">Send</button></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- This is the off-canvas sidebar -->
+    <div id="my-id" class="uk-offcanvas">
+      <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
+      <div class="uk-panel">
+        <h3 class="uk-panel-title">Online Friends (1)</h3>
+        <span><a href="#" class="uk-text-primary"><i class="uk-icon uk-icon-user-plus"></i> Add friend</a></span>
+        <hr class="uk-panel-divider" />
+        <i class="uk-icon uk-icon-toggle-on uk-text-success"></i> <a href="#my-modal"  data-uk-modal>Friend 1</a> <i class="uk-icon uk-icon-times uk-text-danger"></i>
+        <hr class="uk-panel-divider" />
+        <h3 class="uk-panel-title">Offline Friends (4)</h3>
+        <hr class="uk-panel-divider" />
+        <em class="uk-text-muted"><i class="uk-icon uk-icon-toggle-off"></i> Friend 2 <i class="uk-icon uk-icon-times uk-text-danger"></i></em><br />
+        <em class="uk-text-muted"><i class="uk-icon uk-icon-toggle-off"></i> Friend 3 <i class="uk-icon uk-icon-times uk-text-danger"></i></em><br />
+        <em class="uk-text-muted"><i class="uk-icon uk-icon-toggle-off"></i> Friend 4 <i class="uk-icon uk-icon-times uk-text-danger"></i></em><br />
+        <em class="uk-text-muted"><i class="uk-icon uk-icon-toggle-off"></i> Friend 5 <i class="uk-icon uk-icon-times uk-text-danger"></i></em><br />
+        <hr class="uk-panel-divider" />
+      </div>
+    </div>
+';
+?>
