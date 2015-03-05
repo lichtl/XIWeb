@@ -13,3 +13,9 @@ testing on your own server.
 This was done intentionally to prevent early testing and bug reporting. Although bug fixes are important, I do not want
 to be flooded with bugs at the very beginning of the project, and would rather wait until the system is more polished
 before requesting testers.
+
+This software requires at 'minimum' the following versions:
+
+PHP 5.5
+MySQL 5.5
+Apache2
