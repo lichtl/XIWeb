@@ -4,8 +4,8 @@ session_start();
 include_once('lang/'.$language.'.inc.php');
 $_SESSION['errors'] = '';
 
-$db = new PDO('mysql:host=localhost;dbname=dspweb_dspdb;charset=utf8', 'dspweb', '123qaz'); // Change this to match the config file
-$xi = new PDO('mysql:localhost;dbname=dspweb_xiweb;charset=utf8', 'dspweb', '123qaz'); // Change this to match the config file
+$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';charset=utf8', ''.$db_user.'', ''.$db_pass.''); 
+$xi = new PDO('mysql:host='.$db_host.';dbname='.$xi_name.';charset=utf8', ''.$db_user.'', ''.$db_pass.'');
 
 $skill_ids = array(
   'non' => 2,

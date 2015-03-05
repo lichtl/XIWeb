@@ -81,7 +81,7 @@ else {
   $char = $character[0];
   $output .= '
   <div class="uk-panel uk-panel-box uk-align-center uk-width-1-2">
-      <h3 class="uk-panel-title"><i class="uk-icon uk-icon-user"></i> Character Sheet - Character1</h3>
+      <h3 class="uk-panel-title"><i class="uk-icon uk-icon-user"></i> Character Sheet - '.$char['charname'].'</h3>
       <hr class="uk-panel-divider" />
       <ul class="uk-tab uk-width-1-1" data-uk-tab data-uk-switcher="{connect:\'#my-id\'}">
         <li><a href="#">Character</a></li>
