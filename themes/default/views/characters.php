@@ -203,22 +203,22 @@ else {
                 <h3 class="uk-panel-title"><i class="uk-icon uk-icon-gavel"></i> Weapon Skills</h3>
                 <hr class="uk-panel-divider" />
                 <div class="uk-grid uk-text-small">
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Axe:</span> 75</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Great Axe:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Club:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Dagger:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Axe:</span> '.getCharacterSkill($char['charid'],'axe').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Great Axe:</span> '.getCharacterSkill($char['charid'],'gax').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Club:</span> '.getCharacterSkill($char['charid'],'clb').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Dagger:</span> '.getCharacterSkill($char['charid'],'dag').'</div>
                 </div>
                 <div class="uk-grid uk-text-small">
-                <div class="uk-width-1-4"><span class="uk-text-bold">Hand-to-Hand:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Katana:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Great Katana:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Polearm:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Hand-to-Hand:</span> '.getCharacterSkill($char['charid'],'h2h').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Katana:</span> '.getCharacterSkill($char['charid'],'kat').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Great Katana:</span> '.getCharacterSkill($char['charid'],'gkt').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Polearm:</span> '.getCharacterSkill($char['charid'],'pol').'</div>
                 </div>
                 <div class="uk-grid uk-text-small">
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Scythe:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Staff:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Sword:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Great Sword:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Scythe:</span> '.getCharacterSkill($char['charid'],'syh').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Staff:</span> '.getCharacterSkill($char['charid'],'stf').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Sword:</span> '.getCharacterSkill($char['charid'],'swd').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Great Sword:</span> '.getCharacterSkill($char['charid'],'gsd').'</div>
                 </div>
               </div>
               <br />
@@ -226,9 +226,9 @@ else {
                 <h3 class="uk-panel-title"><i class="uk-icon uk-icon-bullseye"></i> Ranged Skills</h3>
                 <hr class="uk-panel-divider" />
                 <div class="uk-grid uk-align-center uk-text-small">
-                  <div class="uk-width-1-3"><span class="uk-text-bold">Archery:</span> 75</div>
-                  <div class="uk-width-1-3"><span class="uk-text-bold">Marksmanship:</span> 0</div>
-                  <div class="uk-width-1-3"><span class="uk-text-bold">Throwing:</span> 0</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Archery:</span> '.getCharacterSkill($char['charid'],'arc').'</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Marksmanship:</span> '.getCharacterSkill($char['charid'],'mrk').'</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Throwing:</span> '.getCharacterSkill($char['charid'],'thr').'</div>
                 </div>
               </div>
               <br />
@@ -236,10 +236,10 @@ else {
                 <h3 class="uk-panel-title"><i class="uk-icon uk-icon-shield"></i> Defensive Skills</h3>
                 <hr class="uk-panel-divider" />
                 <div class="uk-grid uk-text-small">
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Evasion:</span> 75</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Guarding:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Parrying:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Shield:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Evasion:</span> '.getCharacterSkill($char['charid'],'eva').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Guarding:</span> '.getCharacterSkill($char['charid'],'grd').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Parrying:</span> '.getCharacterSkill($char['charid'],'par').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Shield:</span> '.getCharacterSkill($char['charid'],'shl').'</div>
                 </div>
               </div>
               <br />
@@ -247,26 +247,26 @@ else {
                 <h3 class="uk-panel-title"><i class="uk-icon uk-icon-flask"></i> Magic Skills</h3>
                 <hr class="uk-panel-divider" />
                 <div class="uk-grid uk-text-small">
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Blue:</span> 75</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Dark:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Divine:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Elemental:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Blue:</span> '.getCharacterSkill($char['charid'],'blu').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Dark:</span> '.getCharacterSkill($char['charid'],'drk').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Divine:</span> '.getCharacterSkill($char['charid'],'div').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Elemental:</span> '.getCharacterSkill($char['charid'],'ele').'</div>
                 </div>
                 <div class="uk-grid uk-text-small">
-                <div class="uk-width-1-4"><span class="uk-text-bold">Enfeebling:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Enhancing:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Healing:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Summoning:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Enfeebling:</span> '.getCharacterSkill($char['charid'],'enf').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Enhancing:</span> '.getCharacterSkill($char['charid'],'enh').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Healing:</span> '.getCharacterSkill($char['charid'],'hea').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Summoning:</span> '.getCharacterSkill($char['charid'],'sum').'</div>
                 </div>
                 <div class="uk-grid uk-text-small">
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Ninjutsu:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Singing:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">String:</span> 0</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Wind:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Ninjutsu:</span> '.getCharacterSkill($char['charid'],'nin').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Singing:</span> '.getCharacterSkill($char['charid'],'sng').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">String:</span> '.getCharacterSkill($char['charid'],'str').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Wind:</span> '.getCharacterSkill($char['charid'],'wnd').'</div>
                 </div>
                 <div class="uk-grid uk-text-small">
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Geomancy:</span> 75</div>
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Handbell:</span> 0</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Geomancy:</span> '.getCharacterSkill($char['charid'],'geo').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Handbell:</span> '.getCharacterSkill($char['charid'],'hnd').'</div>
                   <div class="uk-width-1-4">&nbsp;</div>
                   <div class="uk-width-1-4">&nbsp;</div>
                 </div>
@@ -277,20 +277,20 @@ else {
               <h3 class="uk-panel-title"><i class="uk-icon uk-icon-cutlery"></i> Crafting Skills</h3>
               <hr class="uk-panel-divider" />
               <div class="uk-grid uk-text-small">
-                <div class="uk-width-1-4"><span class="uk-text-bold">Alchemy:</span> 75</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Bonecraft:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Clothcraft:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Cooking:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Alchemy:</span> '.getCharacterSkill($char['charid'],'alc').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Bonecraft:</span> '.getCharacterSkill($char['charid'],'bon').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Clothcraft:</span> '.getCharacterSkill($char['charid'],'clt').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Cooking:</span> '.getCharacterSkill($char['charid'],'cok').'</div>
               </div>
               <div class="uk-grid uk-text-small">
-                <div class="uk-width-1-4"><span class="uk-text-bold">Fishing:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Goldsmithing:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Leathercraft:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Smithing:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Fishing:</span> '.getCharacterSkill($char['charid'],'fsh').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Goldsmithing:</span> '.getCharacterSkill($char['charid'],'gld').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Leathercraft:</span> '.getCharacterSkill($char['charid'],'lth').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Smithing:</span> '.getCharacterSkill($char['charid'],'smt').'</div>
               </div>
               <div class="uk-grid uk-text-small">
-                <div class="uk-width-1-4"><span class="uk-text-bold">Woodworking:</span> 0</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Synergy:</span> 0</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Woodworking:</span> '.getCharacterSkill($char['charid'],'wdw').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Synergy:</span> '.getCharacterSkill($char['charid'],'syn').'</div>
                 <div class="uk-width-1-4">&nbsp;</div>
                 <div class="uk-width-1-4">&nbsp;</div>
               </div>
@@ -307,9 +307,9 @@ else {
                 <h3 class="uk-panel-title"><i class="uk-icon uk-icon-wifi"></i> Ranks</h3>
                 <hr class="uk-panel-divider" />
                 <div class="uk-grid uk-align-center uk-text-small">
-                  <div class="uk-width-1-3"><span class="uk-text-bold">San D\'Oria:</span> 75</div>
-                  <div class="uk-width-1-3"><span class="uk-text-bold">Bastok:</span> 0</div>
-                  <div class="uk-width-1-3"><span class="uk-text-bold">Windurst:</span> 0</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">San D\'Oria:</span> '.getCharacterRank($char['charid'],'sandoria').'</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Bastok:</span> '.getCharacterRank($char['charid'],'bastok').'</div>
+                  <div class="uk-width-1-3"><span class="uk-text-bold">Windurst:</span> '.getCharacterRank($char['charid'],'windurst').'</div>
                 </div>
               </div>
               <br />
@@ -317,11 +317,11 @@ else {
                 <h3 class="uk-panel-title"><i class="uk-icon uk-icon-signal"></i> Fame</h3>
                 <hr class="uk-panel-divider" />
                 <div class="uk-grid uk-align-center uk-text-small">
-                  <div class="uk-width-1-5"><span class="uk-text-bold">San D\'Oria:</span> 75</div>
-                  <div class="uk-width-1-5"><span class="uk-text-bold">Bastok:</span> 0</div>
-                  <div class="uk-width-1-5"><span class="uk-text-bold">Windurst:</span> 0</div>
-                  <div class="uk-width-1-5"><span class="uk-text-bold">Norg:</span> 0</div>
-                  <div class="uk-width-1-5"><span class="uk-text-bold">Jeuno:</span> 0</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">San D\'Oria:</span> '.getCharacterFame($char['charid'],'sandoria').'</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">Bastok:</span> '.getCharacterFame($char['charid'],'bastok').'</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">Windurst:</span> '.getCharacterFame($char['charid'],'windurst').'</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">Norg:</span> '.getCharacterFame($char['charid'],'norg').'</div>
+                  <div class="uk-width-1-5"><span class="uk-text-bold">Jeuno:</span> '.getCharacterFame($char['charid'],'jeuno').'</div>
                 </div>
               </div>
             </div>  

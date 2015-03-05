@@ -29,3 +29,7 @@ $lang['error']['install'] = array(
 $lang['text']['general'] = array(
   'unavailable' => 'Not Available',
 );
+
+$lang['error']['character'] = array(
+  'no_access' => 'You do not have access to view this character, or the owner has not made this profile public.'
+);

@@ -27,6 +27,99 @@ function doLogin($username,$password) {
 
 // Character related functions
 
+function isProfilePublic() {
+  return true;
+}
+
+function getCharacterOwner($charid) {
+  global $db,$skill_ids;
+  
+  $strSQL = "SELECT `accid` FROM chars WHERE charid = :charID";
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charID',$charid);
+
+  if (!$statement->execute()) {
+    var_dump( $statement->errorInfo() );
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  if (!empty($arrReturn)) {
+    return $arrReturn[0]['accid'];  }
+  else {
+    return '0';
+  }
+}
+
+function getCharacterSkill($charid,$skill) {
+  global $db,$skill_ids;
+  
+  $strSQL = "SELECT `value` FROM char_skills WHERE charid = :charID AND skillid = :skillID";
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charID',$charid);
+  $statement->bindValue(':skillID',$skill_ids[$skill]);
+
+  if (!$statement->execute()) {
+    var_dump( $statement->errorInfo() );
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  if (!empty($arrReturn)) {
+    return $arrReturn[0]['value'];  }
+  else {
+    return '0';
+  }
+}
+
+function getCharacterRank($charid,$rank) {
+  global $db;
+  
+  $strSQL = "SELECT `rank_$rank` FROM char_profile WHERE charid = :charID";
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charID',$charid);
+
+  if (!$statement->execute()) {
+    var_dump( $statement->errorInfo() );
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  if (!empty($arrReturn)) {
+    return $arrReturn[0]['rank_'.$rank];  }
+  else {
+    return '0';
+  }
+}
+
+function getCharacterFame($charid,$fame) {
+  global $db;
+  
+  $strSQL = "SELECT `fame_$fame` FROM char_profile WHERE charid = :charID";
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charID',$charid);
+
+  if (!$statement->execute()) {
+    var_dump( $statement->errorInfo() );
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  if (!empty($arrReturn)) {
+    return $arrReturn[0]['fame_'.$fame];  }
+  else {
+    return '0';
+  }
+}
+
 function getCharacterInventory($charid,$slot) {
   global $db;
   
