@@ -12,7 +12,7 @@ $lang['error']['auth'] = array(
 // General page errors
 $lang['error']['general'] = array(
   'error_message' => 'Please correct the following errors:',
-  'field_required' => 'This is a required field'
+  'field_required' => 'This is a required field',
 );
 
 
@@ -23,11 +23,19 @@ $lang['error']['config'] = array(
 
 // Installation errors
 $lang['error']['install'] = array(
-  'not_installed' => 'XIWeb does not appear to be installed. Please run setup.'
+  'not_installed' => 'XIWeb does not appear to be installed. Please run setup.',
+  'installed' => 'XIWeb appears to already be installed. Please remove the /install/ directory from your webroot.',
+  'error_config_file_not_writeable' => 'The file \'config.php\' does not appear to be writeable.',
+  'error_db_address_blank' => 'The database address was left blank.',
+  'error_db_user_blank' => 'The database user was left blank.',
+  'error_db_password_blank' => 'The database password was left blank.',
+  'error_db_blank' => 'The database name was left blank.',
+  'error_xidb_blank' => 'The XIWeb database name was left blank.'
 );
 
 $lang['text']['general'] = array(
   'unavailable' => 'Not Available',
+    'ok' => 'OK',
 );
 
 $lang['error']['character'] = array(
