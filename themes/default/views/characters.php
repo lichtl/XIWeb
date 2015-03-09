@@ -58,7 +58,7 @@ if ($page == 'characters') {
                   <td>'.getJobLevel($char['charid'],getCharMJob($char['charid'])).strtoupper(getCharMJob($char['charid'])).'</td>
                   <td>'.getJobLevel($char['charid'],getCharSJob($char['charid'])).strtoupper(getCharSJob($char['charid'])).'</td>
                   <td>'.getZoneName(getCharacterZone($char['charid'])).'</td>
-                  <td><i class="uk-icon uk-icon-edit uk-text-warning"></i> | <i class="uk-icon uk-icon-link uk-text-primary"></i> | <i class="uk-icon uk-icon-times uk-text-danger"></i></td>
+                  <td><i class="uk-icon uk-icon-link uk-text-primary"></i> | <i class="uk-icon uk-icon-times uk-text-danger"></i></td>
               </tr>
       ';
     }
