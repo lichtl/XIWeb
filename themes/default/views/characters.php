@@ -36,13 +36,12 @@ if ($page == 'characters') {
                 <th>Main Job</th>
                 <th>Support Job</th>
                 <th>Current Location</th>
-                <th>Actions</th>
+                <th>&nbsp;</th>
               </tr>
           </thead>
           <tfoot>
               <tr>
                 <td colspan=6>
-                 <span>In order for you or others to view your characters, you must link (<i class="uk-icon uk-icon-link"></i>) them to your account</span><br />
                  <span>The character highlighted in <strong>bold</strong> is your favorite character, and will be used as default in all transactions.</span>
                 </td>
               </tr>
@@ -58,7 +57,7 @@ if ($page == 'characters') {
                   <td>'.getJobLevel($char['charid'],getCharMJob($char['charid'])).strtoupper(getCharMJob($char['charid'])).'</td>
                   <td>'.getJobLevel($char['charid'],getCharSJob($char['charid'])).strtoupper(getCharSJob($char['charid'])).'</td>
                   <td>'.getZoneName(getCharacterZone($char['charid'])).'</td>
-                  <td><i class="uk-icon uk-icon-link uk-text-primary"></i> | <i class="uk-icon uk-icon-times uk-text-danger"></i></td>
+                  <td><i class="uk-icon uk-icon-times uk-text-danger"></i></td>
               </tr>
       ';
     }
