@@ -23,29 +23,29 @@ if ($page == 'regional main') {
         <h3 class="uk-panel-title"><i class="uk-icon uk-icon-globe"></i> Regional</h3>
         <hr class="uk-panel-divider" />
         <dl id="gmap">
-          <dd><a id="sandoria" title="San D\'oria" href="regional.php?id=2">San D\'Oria<br />Regional Info<br />'. getRegionCount("Sandoria") .' players online</a></dd>
-          <dd><a id="ronfaure" title="Ronfaure" href="regional.php?id=3">Ronfaure<br />Regional Info<br />'. getRegionCount("Ronfaure") .' players online</a></dd>
-          <dd><a id="bastok" title="Bastok" href="regional.php?id=1">Bastok<br />Regional Info<br />'. getRegionCount("Bastok") .' players online</a></dd>
-          <dd><a id="zulkheim" title="Zulkheim" href="regional.php?id=4">Zulkheim<br />Regional Info<br />'. getRegionCount("Zulkheim") .' players online</a></dd>
-          <dd><a id="windurst" title="Windurst" href="regional.php?id=5">Windurst<br />Regional Info<br />'. getRegionCount("Windurst") .' players online</a></dd>
-          <dd><a id="valdeaunia" title="Valdeaunia" href="regional.php?id=6">Valdeaunia<br />Regional Info<br />'. getRegionCount("Valdeaunia") .' players online</a></dd>
-          <dd><a id="norvallen" title="Norvallen" href="regional.php?id=7">Norvallen<br />Regional Info<br />'. getRegionCount("Norvallen") .' players online</a></dd>
-          <dd><a id="volbow" title="Volbow" href="regional.php?id=8">Volbow<br />Regional Info<br />'. getRegionCount("Volbow") .' players online</a></dd>
-          <dd><a id="sarutabaruta" title="Sarutabaruta" href="regional.php?id=9">Sarutabaruta<br />Regional Info<br />'. getRegionCount("Sarutabaruta") .' players online</a></dd>
-          <dd><a id="elshimo" title="Elshimo Lowlands" href="regional.php?id=10">Elshimo Lowlands<br />Regional Info<br />'. getRegionCount("ElshimoLL") .' players online</a></dd>
-          <dd><a id="elshimo2" title="Elshimo Uplands" href="regional.php?id=11">Elshimo Uplands<br />Regional Info<br />'. getRegionCount("ElshimoUL") .' players online</a></dd>
-          <dd><a id="kuzotz" title="Kuzotz" href="regional.php?id=12">Kuzotz<br />Regional Info<br />'. getRegionCount("Kuzotz") .' players online</a></dd>
-          <dd><a id="tavnazian" title="Tavnazian Archipelago" href="regional.php?id=13">Tavnazian Archipelago<br />Regional Info<br />'. getRegionCount("Tavnazian") .' players online</a></dd>
-          <dd><a id="fauregandi" title="Fauregandi" href="regional.php?id=14">Fauregandi<br />Regional Info<br />'. getRegionCount("Fauregandi") .' players online</a></dd>
-          <dd><a id="qufim" title="Qufim" href="regional.php?id=15">Qufim<br />Regional Info<br />'. getRegionCount("Qufim") .' players online</a></dd>
-          <dd><a id="jeuno" title="Jeuno" href="regional.php?id=16">Jeuno<br />Regional Info<br />'. getRegionCount("Jeuno") .' players online</a></dd>
-          <dd><a id="gustaberg" title="Gustaberg" href="regional.php?id=17">Gustaberg<br />Regional Info<br />'. getRegionCount("Gustaberg") .' players online</a></dd>
-          <dd><a id="tulia" title="Tu\'Lia" href="regional.php?id=18">Tu\'Lia<br />Regional Info<br />'. getRegionCount("TuLia") .' players online</a></dd>
-          <dd><a id="litelor" title="Li\'Telor" href="regional.php?id=19">Li\'Telor<br />Regional Info<br />'. getRegionCount("LiTelor") .' players online</a></dd>
-          <dd><a id="kolshushu" title="Kolshushu" href="regional.php?id=20">Kolshushu<br />Regional Info<br />'. getRegionCount("Kolshushu") .' players online</a></dd>
-          <dd><a id="aragoneu" title="Aragoneu" href="regional.php?id=21">Aragoneu<br />Regional Info<br />'. getRegionCount("Arargoneu") .' players online</a></dd>
-          <dd><a id="derfland" title="Derfland" href="regional.php?id=22">Derfland<br />Regional Info<br />'. getRegionCount("Derfland") .' players online</a></dd>
-          <dd><a id="movalpolos" title="Movalpolos" href="regional.php?id=23">Movalpolos<br />Regional Info<br />'. getRegionCount("Ronfaure") .' players online</a></dd>
+          <dd><a id="sandoria" href="regional.php?id=2">San D\'Oria<br />Regional Info<br /><br />'. getRegionCount("Sandoria") .' players online</a></dd>
+          <dd><a id="ronfaure" href="regional.php?id=3">Ronfaure<br />Regional Info<br />'. getRegionCount("Ronfaure") .' players online</a></dd>
+          <dd><a id="bastok" href="regional.php?id=1">Bastok<br />Regional Info<br />'. getRegionCount("Bastok") .' players online</a></dd>
+          <dd><a id="zulkheim" href="regional.php?id=4">Zulkheim<br />Regional Info<br />'. getRegionCount("Zulkheim") .' players online</a></dd>
+          <dd><a id="windurst" href="regional.php?id=5">Windurst<br />Regional Info<br />'. getRegionCount("Windurst") .' players online</a></dd>
+          <dd><a id="valdeaunia" href="regional.php?id=6">Valdeaunia<br />Regional Info<br />'. getRegionCount("Valdeaunia") .' players online</a></dd>
+          <dd><a id="norvallen" href="regional.php?id=7">Norvallen<br />Regional Info<br />'. getRegionCount("Norvallen") .' players online</a></dd>
+          <dd><a id="volbow" href="regional.php?id=8">Volbow<br />Regional Info<br />'. getRegionCount("Volbow") .' players online</a></dd>
+          <dd><a id="sarutabaruta" href="regional.php?id=9">Sarutabaruta<br />Regional Info<br />'. getRegionCount("Sarutabaruta") .' players online</a></dd>
+          <dd><a id="elshimo" href="regional.php?id=10">Elshimo Lowlands<br />Regional Info<br />'. getRegionCount("ElshimoLL") .' players online</a></dd>
+          <dd><a id="elshimo2" href="regional.php?id=11">Elshimo Uplands<br />Regional Info<br />'. getRegionCount("ElshimoUL") .' players online</a></dd>
+          <dd><a id="kuzotz" href="regional.php?id=12">Kuzotz<br />Regional Info<br />'. getRegionCount("Kuzotz") .' players online</a></dd>
+          <dd><a id="tavnazian" Archipelago" href="regional.php?id=13">Tavnazian Archipelago<br />Regional Info<br />'. getRegionCount("Tavnazian") .' players online</a></dd>
+          <dd><a id="fauregandi" href="regional.php?id=14">Fauregandi<br />Regional Info<br />'. getRegionCount("Fauregandi") .' players online</a></dd>
+          <dd><a id="qufim" href="regional.php?id=15">Qufim<br />Regional Info<br />'. getRegionCount("Qufim") .' players online</a></dd>
+          <dd><a id="jeuno" href="regional.php?id=16">Jeuno<br />Regional Info<br />'. getRegionCount("Jeuno") .' players online</a></dd>
+          <dd><a id="gustaberg" href="regional.php?id=17">Gustaberg<br />Regional Info<br />'. getRegionCount("Gustaberg") .' players online</a></dd>
+          <dd><a id="tulia" href="regional.php?id=18">Tu\'Lia<br />Regional Info<br />'. getRegionCount("TuLia") .' players online</a></dd>
+          <dd><a id="litelor" href="regional.php?id=19">Li\'Telor<br />Regional Info<br />'. getRegionCount("LiTelor") .' players online</a></dd>
+          <dd><a id="kolshushu" href="regional.php?id=20">Kolshushu<br />Regional Info<br />'. getRegionCount("Kolshushu") .' players online</a></dd>
+          <dd><a id="aragoneu" href="regional.php?id=21">Aragoneu<br />Regional Info<br />'. getRegionCount("Arargoneu") .' players online</a></dd>
+          <dd><a id="derfland" href="regional.php?id=22">Derfland<br />Regional Info<br />'. getRegionCount("Derfland") .' players online</a></dd>
+          <dd><a id="movalpolos" href="regional.php?id=23">Movalpolos<br />Regional Info<br />'. getRegionCount("Ronfaure") .' players online</a></dd>
         </dl>
         <br />
         <br />
