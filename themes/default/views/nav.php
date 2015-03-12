@@ -13,14 +13,12 @@ if (!empty($_SESSION['auth'])) {
                 <ul class="uk-nav uk-nav-navbar">
                     <li><a href="characterCreate.html"><i class="uk-icon uk-icon-plus"></i> Create Character</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li class="uk-nav-header">CHARACTERS</li>
-  ';
+                    <li class="uk-nav-header">CHARACTERS</li>';
 
   if (!empty($characters)) {
     foreach($characters as $chars) {
       $output .= '
-                    <li><a href="characters.php?id='.$chars['charid'].'"><i class="uk-icon uk-icon-user"></i> '.$chars['charname'].'</a></li>
-      ';
+                    <li><a href="characters.php?id='.$chars['charid'].'"><i class="uk-icon uk-icon-user"></i> '.$chars['charname'].'</a></li>';
     }
   }
   else {
@@ -36,9 +34,9 @@ if (!empty($_SESSION['auth'])) {
               <div class="uk-dropdown uk-dropdown-navbar">
                 <ul class="uk-nav uk-nav-navbar">
                     <li class="uk-nav-header">ONLINE TOTALS</li>
-                    <li><a href="#"><i class="uk-icon uk-icon-user"></i> 0 players online</a></li>
+                    <li><a href="#"><i class="uk-icon uk-icon-user"></i> '.onlineCount().' players online</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a href="regionalMap.html"><i class="uk-icon uk-icon-compass"></i> Region Map</a></li>
+                    <li><a href="regional.php"><i class="uk-icon uk-icon-compass"></i> Region Map</a></li>
                 </ul>
               </div>
             </li>
@@ -74,7 +72,6 @@ if (!empty($_SESSION['auth'])) {
             <li><a href="#my-id" data-uk-offcanvas><i class="uk-icon uk-icon-heart"></i> Friends</a></li>
           </ul>
         </div>
-      </nav>
-  ';
+      </nav>';
 }
 ?>

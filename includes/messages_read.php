@@ -1,0 +1,5 @@
+<?php
+
+
+$page = 'messages read';
+?>
