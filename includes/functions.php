@@ -11,7 +11,7 @@ function doLogin($username,$password) {
   $statement->bindValue(':password',$_POST['password']);
 
   if (!$statement->execute()) { 
-    var_dump( $statement->errorInfo() ); 
+    watchdog($statement->errorInfo(),'SQL'); 
   }
   else {
     $arrReturn = $statement->fetchAll(); 
@@ -35,7 +35,7 @@ function getCharacterRace($charid) {
   $statement->bindValue(':charID',$charid);
   
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -57,7 +57,7 @@ function getCharacterGender($charid) {
   $statement->bindValue(':charID',$charid);
   
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -86,7 +86,7 @@ function getCharacterAppearance($charid) {
   $statement->bindValue(':charID',$charid);
   
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -115,7 +115,7 @@ function getCharacterEquipment($charid,$slot) {
   $statement->bindValue(':slotID',$equipment_ids[$slot]);
   
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -134,7 +134,7 @@ function getCharacterEquipment($charid,$slot) {
     $statement->bindValue(':charID',$charid);
     
     if (!$statement->execute()) {
-      var_dump( $statement->errorInfo() );
+      watchdog($statement->errorInfo(),'SQL');
     }
     else {
       $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -143,7 +143,6 @@ function getCharacterEquipment($charid,$slot) {
     // If the result isn't empty, return the itemid of the item in this slot, else return 0 to signify nothing.
     if (!empty($arrReturn)) {
       return $arrReturn[0]['itemid'];
-      var_dump($arrReturn[0]['itemid']);
     }
     else {
       return 0;
@@ -159,7 +158,7 @@ function getCharacterName($charid) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -186,7 +185,7 @@ function getCharacterOwner($charid) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -209,7 +208,7 @@ function getCharacterSkill($charid,$skill) {
   $statement->bindValue(':skillID',$skill_ids[$skill]);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -231,7 +230,7 @@ function getCharacterRank($charid,$rank) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -253,7 +252,7 @@ function getCharacterFame($charid,$fame) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -275,7 +274,7 @@ function getCharacterInventory($charid,$slot) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -297,7 +296,7 @@ function getCharacterHP($charid) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -319,7 +318,7 @@ function getCharacterMP($charid) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -341,7 +340,7 @@ function getCharacterExp($charid,$job) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -365,7 +364,7 @@ function getCharacterMaxExp($charid) {
   $statement->bindValue(':level',$level);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -387,7 +386,7 @@ function getTitle($charid) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -410,7 +409,7 @@ function getCharMJob($charid) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll();
@@ -432,7 +431,7 @@ function getCharSJob($charid) {
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll();
@@ -457,14 +456,13 @@ function getJobLevel($charid,$job) {
     $statement->bindValue(':charID',$charid);
 
     if (!$statement->execute()) {
-      var_dump( $statement->errorInfo() );
+      watchdog($statement->errorInfo(),'SQL');
     }
     else {
       $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     if (!empty($arrReturn)) {
-      #var_dump($arrReturn);
       return $arrReturn[0][$job];
     }
     else {
@@ -485,14 +483,13 @@ global $db;
   $statement->bindValue(':charID',$charid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
   if (!empty($arrReturn)) {
-    #var_dump($arrReturn);
     return $arrReturn[0]['pos_zone'];
   }
   else {
@@ -511,7 +508,7 @@ function getAccountName($accid) {
   $statement->bindValue(':id',$accid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll();
@@ -534,7 +531,7 @@ function getAccountID($account) {
   $statement->bindValue(':username',$_SESSION['auth']['username']);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll();
@@ -572,7 +569,7 @@ function getZoneName($zoneid) {
   $statement->bindValue(':zoneID',$zoneid);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -595,7 +592,7 @@ function getServerUptime() {
   $statement = $db->prepare($strSQL);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -682,7 +679,7 @@ function onlineCount() {
   $statement = $db->prepare($strSQL);
 
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -780,7 +777,7 @@ function getRegionCount($region) {
 
   $statement = $db->prepare($strSQL);
   if (!$statement->execute()) {
-    var_dump($statement->errorInfo());
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -802,7 +799,7 @@ function totalRegionCount($region) {
   $statement->bindValue(':region',$region);
   
   if (!$statement->execute()) {
-    var_dump($statement->errorInfo());
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -846,5 +843,18 @@ function getRegionName($region) {
   
   return $name[$region];
   
+}
+
+function watchdog($error,$type) {
+  global $xi;
+  
+  $strSQL = "INSERT INTO watchdog (`timestamp`,`type`,`message`) VALUES (:time,:type,:message)";
+  $statement = $xi->prepare($strSQL);
+  $statement->bindValue(':time',time());
+  $statement->bindValue(':type',$type);
+  $statement->bindValue(':message',$error);
+  
+  // Write the error to the log file
+  $statement->execute();
 }
 ?>

@@ -5,7 +5,7 @@ $statement = $db->prepare("SELECT * FROM chars WHERE charid = :charID");
 $statement->bindValue(':charID',$_GET['id']);
 
 if (!$statement->execute()) {
-  var_dump($statement->errorInfo());
+  watchdog($statement->errorInfo(),'SQL');
 }
 else {
   $character = $statement->fetchAll(PDO::FETCH_ASSOC);

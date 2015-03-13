@@ -20,15 +20,11 @@ if (defined('INSTALLED')) {
   else {
     // We are already logged in, so let's proceed
     
-    // Let's get the front-page news items
-    $statement = $xi->prepare("SELECT * FROM news ORDER BY post_date DESC LIMIT 5");
-    if (!$statement->execute()) {
-      watchdog($statement->errorInfo(),'SQL'); // Change this over to a log file, we dont want to display errors to people
-    }
-    else {
-      $news = $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // Let's get our friends list.
     
+    $friend_list = getFriends(getAccountId($_SESSION['auth']['username']));
+    var_dump($friend_list);
+    // Including our friend totals (online, offline, friend requests)
   }
 }
 else {
@@ -39,7 +35,7 @@ else {
 
 include_once('themes/'.$theme.'/views/header.php');
 include_once('themes/'.$theme.'/views/nav.php');
-include_once('themes/'.$theme.'/views/index.php');
+include_once('themes/'.$theme.'/views/friends.php');
 include_once('themes/'.$theme.'/views/footer.php');
 echo $output;
 ?>

@@ -31,7 +31,7 @@ if ($totalPlayers > 1) {
   $statement = $db->prepare($strSQL);
   
   if (!$statement->execute()) {
-    var_dump($statement->errorInfo());
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $onlineList = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -48,7 +48,7 @@ else {
   $statement = $db->prepare($strSQL);
   
   if (!$statement->execute()) {
-    var_dump($statement->errorInfo());
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $onlineList = $statement->fetchAll(PDO::FETCH_ASSOC);

@@ -111,7 +111,7 @@ if (!empty($_GET['id'])) {
     $statement = $db->prepare($strSQL);
     
     if (!$statement->execute()) {
-      var_dump($statement->errorInfo());
+      watchdog($statement->errorInfo(),'SQL');
     }
     else {
       $onlineList = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -128,7 +128,7 @@ if (!empty($_GET['id'])) {
     $statement = $db->prepare($strSQL);
     
     if (!$statement->execute()) {
-      var_dump($statement->errorInfo());
+      watchdog($statement->errorInfo(),'SQL');
     }
     else {
       $onlineList = $statement->fetchAll(PDO::FETCH_ASSOC);
