@@ -42,10 +42,10 @@ if ($page == 'messages') {
               $body = $conversation['body'];
             }
             // If the receiver is us, we need to make the message bold, so we know it's new
-            if ($conversation['owner'] == getAccountID($_SESSION['auth']['username'])) {
+            if ($conversation['receiver'] == getAccountID($_SESSION['auth']['username'])) {
               $output .= '
             <tr>
-              <td><a href="messages.php?cid='.$conversation['cid'].'" style="display: block;"><strong>'.getAccountName($conversation['owner']).'</strong><br />
+              <td><a href="messages.php?cid='.$conversation['cid'].'" style="display: block;"><strong>'.getAccountName($conversation['sender']).'</strong><br />
               '.(getMessageStatus($conversation['mid']) == 0 ? '<strong>'.$body.'</strong>' : ''.$conversation['body'].'').'<br />
               <em class="uk-text-muted uk-align-right">'.date('j/n/Y g:i A',$conversation['timestamp']).'</em></a></td>
             </tr>';
@@ -53,7 +53,7 @@ if ($page == 'messages') {
             else {
               $output .= '
             <tr>
-              <td><a href="messages.php?cid='.$conversation['cid'].'" style="display: block;"><strong>'.getAccountName($conversation['owner']).'</strong><br />
+              <td><a href="messages.php?cid='.$conversation['cid'].'" style="display: block;"><strong>'.getAccountName($conversation['sender']).'</strong><br />
               '.(getMessageStatus($conversation['mid']) == 0 ? '<i class="uk-icon uk-icon-reply"></i> '.$body.'' : '<i class="uk-icon uk-icon-check"></i> '.$body.'').'<br />
               <em class="uk-text-muted uk-align-right">'.date('j/n/Y g:i A',$conversation['timestamp']).'</em></a></td>
             </tr>';
