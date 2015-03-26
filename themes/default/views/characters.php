@@ -98,10 +98,10 @@ else {
   ';
   // Need to generate the code to make the correct image display here based on the characters race/gender and face/hair combination.
   $output .= '
-              <div class="uk-text-center"><img src="http://vignette3.wikia.nocookie.net/ffxi/images/3/33/Hm2b.jpg" /></div>
+              <div class="uk-text-center"><img src="/themes/default/images/portraits/'.getCharacterRace($char['charid']).getCharacterGender($char['charid']).getCharacterAppearance($char['charid']).'.jpg" /></div>
   ';
   $output .= '
-              <h3 class="uk-panel-title uk-text-center">'.strtoupper(getCharMJob($char['charid'])).getJobLevel($char['charid'],getCharMJob($char['charid'])).(getCharSJob($char['charid']) == true) ? '/'.strtoupper(getCharSJob($char['charid'])).getJobLevel($char['charid'],getCharSJob($char['charid'])).'' : '') .'</h3><br />
+              <h3 class="uk-panel-title uk-text-center">'.strtoupper(getCharMJob($char['charid'])).getJobLevel($char['charid'],getCharMJob($char['charid'])).(getCharSJob($char['charid']) == true ? '/'.strtoupper(getCharSJob($char['charid'])).getJobLevel($char['charid'],getCharSJob($char['charid'])).'' : '') .'</h3><br />
               <div class="uk-grid">
                 <div class="uk-width-1-2">
                   <div class="uk-text-bold">HP</div>
@@ -126,10 +126,22 @@ else {
               <h3 class="uk-panel-title"><i class="uk-icon uk-icon-shield"></i> Equipment</h3>
               <hr class="uk-panel-divider" />
               <div class="uk-panel uk-text-center">
-                <img src="http://static.ffxiah.com/images/eq1.gif" /><img src="http://static.ffxiah.com/images/eq2.gif" /><img src="http://static.ffxiah.com/images/eq3.gif" /><img src="http://static.ffxiah.com/images/eq4.gif" /><br />
-                <img src="http://static.ffxiah.com/images/eq5.gif" /><img src="http://static.ffxiah.com/images/eq6.gif" /><img src="http://static.ffxiah.com/images/eq7.gif" /><img src="http://static.ffxiah.com/images/eq8.gif" /><br />
-                <img src="http://static.ffxiah.com/images/eq9.gif" /><img src="http://static.ffxiah.com/images/eq10.gif" /><img src="http://static.ffxiah.com/images/eq11.gif" /><img src="http://static.ffxiah.com/images/eq12.gif" /><br />
-                <img src="http://static.ffxiah.com/images/eq13.gif" /><img src="http://static.ffxiah.com/images/eq14.gif" /><img src="http://static.ffxiah.com/images/eq15.gif" /><img src="http://static.ffxiah.com/images/eq16.gif" /><br />
+                '.(getCharacterEquipment($char['charid'],'SLOT_MAIN') == 0 ? '<img src="http://static.ffxiah.com/images/eq1.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_MAIN').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_SUB') == 0 ? '<img src="http://static.ffxiah.com/images/eq2.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_SUB').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_RANGED') == 0 ? '<img src="http://static.ffxiah.com/images/eq3.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_RANGED').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_AMMO') == 0 ? '<img src="http://static.ffxiah.com/images/eq4.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_AMMO').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' ).'<br />
+                '.(getCharacterEquipment($char['charid'],'SLOT_HEAD') == 0 ? '<img src="http://static.ffxiah.com/images/eq5.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_HEAD').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_NECK') == 0 ? '<img src="http://static.ffxiah.com/images/eq6.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_NECK').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_EAR1') == 0 ? '<img src="http://static.ffxiah.com/images/eq7.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_EAR1').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_EAR2') == 0 ? '<img src="http://static.ffxiah.com/images/eq8.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_EAR2').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' ).'<br />
+                '.(getCharacterEquipment($char['charid'],'SLOT_BODY') == 0 ? '<img src="http://static.ffxiah.com/images/eq9.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_BODY').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_HANDS') == 0 ? '<img src="http://static.ffxiah.com/images/eq10.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_HANDS').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_RING1') == 0 ? '<img src="http://static.ffxiah.com/images/eq11.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_RING1').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_RING2') == 0 ? '<img src="http://static.ffxiah.com/images/eq12.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_RING2').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' ).'<br />
+                '.(getCharacterEquipment($char['charid'],'SLOT_BACK') == 0 ? '<img src="http://static.ffxiah.com/images/eq13.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_BACK').'.png" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_WAIST') == 0 ? '<img src="http://static.ffxiah.com/images/eq14.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_WAIST').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_LEGS') == 0 ? '<img src="http://static.ffxiah.com/images/eq15.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_LEGS').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' )
+                .(getCharacterEquipment($char['charid'],'SLOT_FEET') == 0 ? '<img src="http://static.ffxiah.com/images/eq16.gif" />' : '<img src="http://static.ffxiah.com/images/icon/'.getCharacterEquipment($char['charid'],'SLOT_FEET').'.png" style="background: url(\'http://static.ffxiah.com/images/equip_box.gif\');" />' ).'<br />
               </div>
             </div>
             <br />

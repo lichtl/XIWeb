@@ -23,7 +23,7 @@ if (defined('INSTALLED')) {
     // Let's get the front-page news items
     $statement = $xi->prepare("SELECT * FROM news ORDER BY post_date DESC LIMIT 5");
     if (!$statement->execute()) {
-      var_dump( $statement->errorInfo() ); // Change this over to a log file, we dont want to display errors to people
+      watchdog($statement->errorInfo(),'SQL'); // Change this over to a log file, we dont want to display errors to people
     }
     else {
       $news = $statement->fetchAll(PDO::FETCH_ASSOC);

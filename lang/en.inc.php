@@ -9,6 +9,24 @@ $lang['error']['auth'] = array(
   'invalid_login' => 'The username or password combination you supplied is incorrect'
 );
 
+
+// Character creation errors
+$lang['error']['create_character'] = array(
+  'empty_charname' => 'You must specify a character name',
+  'empty_race' => 'You must specify a race',
+  'empty_face' => 'You must specify a face type',
+  'empty_hair' => 'You must specify a hair type',
+  'empty_size' => 'You must specify a size',
+  'empty_job' => 'You must specify a job',
+  'empty_gender' => 'You must specify a gender',
+  'empty_nation' => 'You must specify your home nation',
+  'charname_toolong' => 'Your character name is too long (Must be 16 characters or less characters)',
+  'charname_reserved' => 'That character name is forbidden or reserved',
+  'charname_invalid' => 'Character names must only contain alpabetics',
+  'character_exists' => 'That character name is already in use',
+  'creation_error' => 'Unable to create character'
+);
+
 // General page errors
 $lang['error']['general'] = array(
   'error_message' => 'Please correct the following errors:',

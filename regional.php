@@ -20,35 +20,19 @@ if (defined('INSTALLED')) {
   else {
     // We are already logged in, so let's proceed
     
-    $limit = 25;// Move this to config.php for production
-    
-    // Let's find out how many people are online.
-    
-    $totalPlayers = onlineCount();
-    
-    if ($totalPlayers > 0) {
-      if (!empty($_GET['page'])) {
-        $page = $_GET['page'];
-        $totalPages = ($totalPlayers / $limit);
-      }
-      else {
-        $page = 1;
-        $totalPages = 1;
-      }
-      if ($totalPages > 1) {
-        $offset = ($page / $totalPlayers);
-        $statement = $db->query("SELECT * FROM accounts_sessions LIMIT $offset,$limit");
-      }
-      else {
-        $statement = $db->query("SELECT * FROM accounts_sessions");
-      }
+    if (!empty($_GET['id'])) {
+      $region = $_GET['id'];
       
-      if (!$statement->execute()) {
-        var_dump($statement->errorInfo());
+      if ($region > 23) {
+        // add in error reporting here to display on the main page that the region doesn't exist
+        header("Location: regional.php");
       }
       else {
-        $onlineList = $statement->fetchAll(PDO::FETCH_ASSOC);
+        include_once('includes/regional.php');
       }
+    }
+    else {
+      include_once('includes/regional_main.php');
     }
   }
 }

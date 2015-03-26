@@ -22,7 +22,7 @@ if (defined('INSTALLED')) {
         }
         if (empty($_POST['password'])) {
           $_SESSION['errors']['login'][] = $lang['error']['auth']['empty_password']; 
-	  $_SESSION['errors']['validation']['password'] = 2;
+          $_SESSION['errors']['validation']['password'] = 2;
         }
       }
       else {

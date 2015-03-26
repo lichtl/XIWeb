@@ -9,7 +9,7 @@ if (!empty($_SESSION['logged'])) {
   $statement->bindValue(':accID',getAccountID($_SESSION['auth']['username']));
   
   if (!$statement->execute()) {
-    var_dump( $statement->errorInfo() );
+    watchdog($statement->errorInfo(),'SQL');
   }
   else {
     $characters = $statement->fetchAll(PDO::FETCH_ASSOC);
