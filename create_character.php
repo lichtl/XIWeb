@@ -22,6 +22,11 @@ if (defined('INSTALLED')) {
     unset($_SESSION['validation']['validation']);
     // We are already logged in, so let's proceed
 
+     // Are we allowed to create characters? If not, let's get out of here!
+     
+     if (!enable_creation) {
+      header("Location: characters.php");
+     }
     // Let's see if we have submitted the form already. If we have, we need to check for validation.
     
     if (!empty($_POST['create_character'])) {
