@@ -1,12 +1,12 @@
 <?php
 
-if (!empty($_SESSION['errors']['login'])) {
+if (!empty($_SESSION['errors']['register'])) {
   $output .= '
    <div class="uk-alert uk-alert-danger uk-width-1-2 uk-align-center">
       <i class="uk-icon uk-icon-times"></i> '.$lang['error']['general']['error_message'].'
       <ul>
   ';
-  foreach ($_SESSION['errors']['login'] as $error) {
+  foreach ($_SESSION['errors']['register'] as $error) {
     $output .= '
         <li>'.$error.'</li>
     ';
@@ -23,40 +23,59 @@ else {
 
 $output .= '
     <div class="uk-panel uk-panel-box uk-align-center uk-width-1-2">
-      <h3 class="uk-panel-title"><i class="uk-icon uk-icon-lock"></i> Login</h3>
+      <h3 class="uk-panel-title"><i class="uk-icon uk-icon-pencil-square"></i> Registration</h3>
       <hr class="uk-panel-divider" />
+      <div class="uk-text-small">Already Have an Account? <a href="login.php"><i class="uk-icon uk-icon-lock"></i> Login</a></div>
+      <br />
       <em class="uk-text-muted uk-text-small">All fields marked with a * are required</em>
       <br />
       <br />
-      <form class="uk-form uk-form-horizontal" action="login.php" method="post">
-        <input type="hidden" name="login" value="1" />
+      <form class="uk-form uk-form-horizontal" method="post" action="register.php">
         <div class="uk-form-row">
-          <label class="uk-form-label uk-text-right">Username or Email*:</label>
+          <label class="uk-form-label">Username*:</label>
           <div class="uk-form-controls">
-            <input '.(!empty($_SESSION['errors']['validation']['username']) ? 'class="uk-form-danger"' : '').' type="text" placeholder="username or email" name="username" '.(!empty($_POST['username']) ? 'value="'.$_POST['username'].'"' : '').' />
-            '.(!empty($_SESSION['errors']['validation']['username']) ? '<br />
-            <span class="uk-form-help-block uk-text-danger"><i class="uk-icon uk-icon-times"></i> '.$lang['error']['general']['field_required'].'</span>' : '').'
+            <input '.(!empty($_SESSION['errors']['validation']['username']) ? 'class="uk-form-danger"' : '').' type="text" placeholder="username" name="username" '.(!empty($username) ? 'value="'.$username.'"' : '').' />
+          '.(!empty($_SESSION['errors']['validation']['username']) ? ' 
+            <br />
+            <span class="uk-form-help-block uk-text-danger"><i class="uk-icon uk-icon-times"></i> '.$_SESSION['errors']['validation']['username'].'</span>' : '').'
           </div>
         </div>
         <div class="uk-form-row">
-          <label class="uk-form-label uk-text-right">Password*:</label>
+          <label class="uk-form-label">Password*:</label>
           <div class="uk-form-controls">
             <div class="uk-form-password">
-              <input '.(!empty($_SESSION['errors']['validation']['password']) ? 'class="uk-form-danger"' : '').' type="password" placeholder="password" name="password" '.(!empty($_POST['password']) ? 'value="'.$_POST['password'].'"' : '').' />
+              <input '.(!empty($_SESSION['errors']['validation']['password']) ? 'class="uk-form-danger"' : '').' type="password" placeholder="password" name="password" '.(!empty($password) ? 'value="'.$password.'"' : '').' />
               <a href="" class="uk-form-password-toggle" data-uk-form-password>Show</a>
             </div>
-            '.(!empty($_SESSION['errors']['validation']['password']) ? '<br />
-            <span class="uk-form-help-block uk-text-danger"><i class="uk-icon uk-icon-times"></i> '.$lang['error']['general']['field_required'].'</span>' : '').'
+            '.(!empty($_SESSION['errors']['validation']['password']) ? ' 
+            <br />
+            <span class="uk-form-help-block uk-text-danger"><i class="uk-icon uk-icon-times"></i> '.$_SESSION['errors']['validation']['password'].'</span>' : '').'
           </div>
         </div>
         <div class="uk-form-row">
+          <label class="uk-form-label">Confirm Password*:</label>
           <div class="uk-form-controls">
-            <button class="uk-button uk-button-primary" type="submit">Login</button>
+            <div class="uk-form-password">
+              <input '.(!empty($_SESSION['errors']['validation']['conf_password']) ? 'class="uk-form-danger"' : '').' type="password" placeholder="confirm password" name="conf_password" '.(!empty($conf_password) ? 'value="'.$conf_password.'"' : '').' />
+              <a href="" class="uk-form-password-toggle" data-uk-form-password>Show</a>
+            </div>
+            '.(!empty($_SESSION['errors']['validation']['conf_password']) ? ' 
+            <br />
+            <span class="uk-form-help-block uk-text-danger"><i class="uk-icon uk-icon-times"></i> '.$_SESSION['errors']['validation']['conf_password'].'</span>' : '').'
           </div>
-          <br />
-          <div class="uk-text-center uk-text-small"><a href="register.php"><i class="uk-icon uk-icon-pencil-square"></i> Create Account</a></div>
-          <div class="uk-text-center uk-text-small"><a href="#"><i class="uk-icon uk-icon-question-circle"></i> Forgot Password</a></div>
         </div>
+        <div class="uk-form-row">
+          <label class="uk-form-label">Email*:</label>
+          <div class="uk-form-controls">
+            <input '.(!empty($_SESSION['errors']['validation']['email']) ? 'class="uk-form-danger"' : '').' type="text" placeholder="email" name="email" '.(!empty($email) ? 'value="'.$email.'"' : '').' />
+            '.(!empty($_SESSION['errors']['validation']['email']) ? ' 
+            <br />
+            <span class="uk-form-help-block uk-text-danger"><i class="uk-icon uk-icon-times"></i> '.$_SESSION['errors']['validation']['email'].'</span>' : '').'
+          </div>
+        </div>
+        <br />
+        <input type="hidden" name="register" value="1" />
+        <button class="uk-button uk-button-primary" type="submit">Register</button>
       </form>
     </div>
     

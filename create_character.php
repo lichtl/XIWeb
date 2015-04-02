@@ -24,7 +24,7 @@ if (defined('INSTALLED')) {
 
      // Are we allowed to create characters? If not, let's get out of here!
      
-     if (!enable_creation) {
+     if (!$enable_creation) {
       header("Location: characters.php");
      }
     // Let's see if we have submitted the form already. If we have, we need to check for validation.

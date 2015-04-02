@@ -11,8 +11,8 @@ if (!empty($_SESSION['auth'])) {
               <a href="characters.php"><i class="uk-icon uk-icon-users"></i> Characters <i class="uk-icon-caret-down"></i></a>
               <div class="uk-dropdown uk-dropdown-navbar">
                 <ul class="uk-nav uk-nav-navbar">
-                    <li><a href="characterCreate.html"><i class="uk-icon uk-icon-plus"></i> Create Character</a></li>
-                    <li class="uk-nav-divider"></li>
+                    '.($enable_creation ? '<li><a href="create_character.php"><i class="uk-icon uk-icon-plus"></i> Create Character</a></li>
+                    <li class="uk-nav-divider"></li>' : '').'
                     <li class="uk-nav-header">CHARACTERS</li>';
 
   if (!empty($characters)) {

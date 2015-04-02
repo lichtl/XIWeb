@@ -25,8 +25,8 @@ if ($page == 'characters') {
   <div class="uk-panel uk-panel-box uk-align-center uk-width-1-2">
       <h3 class="uk-panel-title"><i class="uk-icon uk-icon-lock"></i> Character List</h3>
       <hr class="uk-panel-divider" />
-      <i class="uk-icon uk-icon-plus"></i> <a href="characterCreate.html">Create Character</a>
-      <hr class="uk-panel-divider" />
+      '.($enable_creation ? '<i class="uk-icon uk-icon-plus"></i> <a href="create_character.php">Create Character</a>
+      <hr class="uk-panel-divider" />' : '').'
       <div class="uk-panel uk-panel-box uk-panel-box-secondary">
         <table class="uk-table uk-table-hover uk-table-striped uk-text-small">
           <thead>

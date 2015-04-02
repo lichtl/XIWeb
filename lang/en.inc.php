@@ -9,6 +9,19 @@ $lang['error']['auth'] = array(
   'invalid_login' => 'The username or password combination you supplied is incorrect'
 );
 
+// Account registration errors
+$lang['error']['register'] = array(
+  'empty_username' => 'You must supply a username',
+  'empty_email' => 'You must supply an e-mail address',
+  'empty_password' => 'You must supply a password',
+  'empty_conf_password' => 'You must confirm your password',
+  'password_mismatch' => 'The passwords you supplied do not match',
+  'password_too_short' => 'The password supplied is too short. It must be between 8 and 16 characters',
+  'password_too_long' => 'The password supplied is too long. It must be between 8 and 16 characters',
+  'invalid_email_format' => 'The email address you specified is not in the correct format',
+  'username_taken' => 'The username you supplied is already taken. Please try another one',
+  'email_taken' => 'The email address you supplied is already in use'
+);
 
 // Character creation errors
 $lang['error']['create_character'] = array(

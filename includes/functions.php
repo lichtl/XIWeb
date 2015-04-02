@@ -546,9 +546,13 @@ function getTitle($charid) {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  if (!empty($arrReturn)) {
+  if ($arrReturn[0]['title'] == 0) {
+    return ucwords(strtolower(str_replace('_',' ',$titles[206])));
+  }
+  if (!empty($arrReturn) && $arrReturn[0]['title'] != 0) {
     return ucwords(strtolower(str_replace('_',' ',$titles[$arrReturn[0]['title']])));  
   }
+
   else {
     return '';
   }
@@ -653,6 +657,70 @@ global $db;
 
 // Account related functions
 
+function isEmailRegistered($email) {
+  global $db;
+  
+  $strSQL = "SELECT email FROM accounts WHERE email=:email";
+  $statement = $db->prepare($strSQL);
+  
+  $statement->bindValue(':email',$email);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    if (!empty($arrReturn) && ($arrReturn[0]['email'] != "")) {
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
+  }
+}
+
+function getMaxAccountID() {
+  global $db;
+  
+  $strSQL = "SELECT max(id) AS maxid FROM accounts";
+  $statement = $db->prepare($strSQL);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    if (!empty($arrReturn)) {
+      return $arrReturn[0]['maxid'];
+    }
+    else {
+      return 999;
+    }
+  }
+}
+
+function createAccount($account,$password,$email) {
+  global $db;
+  
+  $id = getMaxAccountID() + 1;
+  
+  $strSQL = "INSERT INTO accounts (`id`,`login`,`password`,`email`) VALUES(:id,:login,PASSWORD('$password'),:email)";
+  $statement = $db->prepare($strSQL);
+  $statement->bindValue(':id',$id);
+  $statement->bindValue(':login',$account);
+  $statement->bindValue(':email',$email);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+    var_dump($statement->errorInfo());
+  }
+  else {
+    return TRUE;
+  }
+}
+
 function getAccountName($accid) {
   global $db;
 
@@ -682,7 +750,7 @@ function getAccountID($account) {
   $strSQL = "SELECT id FROM accounts WHERE login = :username OR email = :username";
   $statement = $db->prepare($strSQL);
 
-  $statement->bindValue(':username',$_SESSION['auth']['username']);
+  $statement->bindValue(':username',$account);
 
   if (!$statement->execute()) {
     watchdog($statement->errorInfo(),'SQL');
