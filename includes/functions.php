@@ -27,6 +27,48 @@ function doLogin($username,$password) {
 
 // Character related functions
 
+function getCharacterCurrency($charid,$currency) {
+  global $db;
+  
+  $strSQL = "SELECT $currency FROM char_points WHERE charid='$charid'";
+  $statement = $db->prepare($strSQL);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  
+  if (empty($arrReturn)) {
+    return 0;
+  }
+  else {
+    return $arrReturn[0][$currency];
+  }
+} 
+
+function getCharacterPoints($charid,$points) {
+  global $db;
+  
+  $strSQL = "SELECT $points FROM char_points WHERE charid='$charid'";
+  $statement = $db->prepare($strSQL);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  
+  if (empty($arrReturn)) {
+    return 0;
+  }
+  else {
+    return $arrReturn[0][$points];
+  }
+} 
+
 function getLastCharacterID() {
   global $db;
   
@@ -106,8 +148,33 @@ function createCharacter($accid,$charname,$fc,$rc,$sz,$na,$jo) {
     return FALSE;
   }
   
-  // Insert the characters stats into the database
-  $strSQL = "INSERT INTO char_stats (`charid`) VALUES(:charID)";
+  $job = array(
+    1 => "war",
+    2 => "mnk",
+    3 => "whm",
+    4 => "blm",
+    5 => "rdm",
+    6 => "thf",
+    7 => "pld",
+    8 => "drk",
+    9 => "bst",
+    10 => "brd",
+    11 => "rng",
+    12 => "sam",
+    13 => "nin",
+    14 => "drg",
+    15 => "smn",
+    16 => "blm",
+    17 => "cor",
+    18 => "pup",
+    19 => "dnc",
+    20 => "sch",
+    21 => "geo",
+    22 => "run" 
+  );
+
+  // Insert the characters job into the database
+  $strSQL = "UPDATE char_jobs SET $job[$jo] = 1 WHERE charid = $charid";
   $statement = $db->prepare($strSQL);
   $statement->bindValue(':charID',$charid);
   
@@ -125,39 +192,39 @@ function createCharacter($accid,$charname,$fc,$rc,$sz,$na,$jo) {
     watchdog($statement->errorInfo(),'SQL');
     return FALSE;
   }
-  // Insert the characters points into the database
-  $strSQL = "INSERT INTO char_points (`charid`) VALUES(:charID)";
-  $statement = $db->prepare($strSQL);
-  $statement->bindValue(':charID',$charid);
+  // // Insert the characters points into the database
+  // $strSQL = "INSERT INTO char_points (`charid`) VALUES(:charID)";
+  // $statement = $db->prepare($strSQL);
+  // $statement->bindValue(':charID',$charid);
   
-  if (!$statement->execute()) {
-    watchdog($statement->errorInfo(),'SQL');
-    return FALSE;
-  }
+  // if (!$statement->execute()) {
+    // watchdog($statement->errorInfo(),'SQL');
+    // return FALSE;
+  // }
   
-  // Insert the characters profile into the database
-  $strSQL = "INSERT INTO char_profile (`charid`) VALUES(:charID)";
-  $statement = $db->prepare($strSQL);
-  $statement->bindValue(':charID',$charid);
+  // // Insert the characters profile into the database
+  // $strSQL = "INSERT INTO char_profile (`charid`) VALUES(:charID)";
+  // $statement = $db->prepare($strSQL);
+  // $statement->bindValue(':charID',$charid);
   
-  if (!$statement->execute()) {
-    watchdog($statement->errorInfo(),'SQL');
-    return FALSE;
-  }
+  // if (!$statement->execute()) {
+    // watchdog($statement->errorInfo(),'SQL');
+    // return FALSE;
+  // }
   
-  // Insert the characters inventory into the database
-  $strSQL = "INSERT INTO char_inventory (`charid`) VALUES(:charID)";
-  $statement = $db->prepare($strSQL);
-  $statement->bindValue(':charID',$charid);
+  // // Insert the characters inventory into the database
+  // $strSQL = "INSERT INTO char_inventory (`charid`) VALUES(:charID)";
+  // $statement = $db->prepare($strSQL);
+  // $statement->bindValue(':charID',$charid);
   
-  if (!$statement->execute()) {
-    watchdog($statement->errorInfo(),'SQL');
-    return FALSE;
-  }
+  // if (!$statement->execute()) {
+    // watchdog($statement->errorInfo(),'SQL');
+    // return FALSE;
+  // }
   
-  else {
-    return TRUE;
-  }
+  // else {
+    // return TRUE;
+  // }
 }
 
 function characterExists($charname) {
