@@ -40,9 +40,10 @@ if (!empty($_SESSION['auth'])) {
                 </ul>
               </div>
             </li>
-            <li> <a href="auctionhouse.html"><i class="uk-icon uk-icon-gavel"></i> Auction House</a></li>
-            <li> <a href=""><i class="uk-icon uk-icon-eye"></i> Items</a></li>
-            <li> <a href="bestiary.html"><i class="uk-icon uk-icon-crosshairs"></i> Bestiary</a></li>
+            '.($ah ? '<li> <a href="auctionhouse.html"><i class="uk-icon uk-icon-gavel"></i> Auction House</a></li>' : '').'
+            '.($items ? '<li> <a href=""><i class="uk-icon uk-icon-eye"></i> Items</a></li>' : '').'
+            '.($bestiary ? '<li> <a href="bestiary.html"><i class="uk-icon uk-icon-crosshairs"></i> Bestiary</a></li>' : '').'
+            '.($tickets ? '
             <li class="uk-parent" data-uk-dropdown>
               <a href=""><i class="uk-icon uk-icon-ticket"></i> Support <i class="uk-icon-caret-down"></i></a>
               <div class="uk-dropdown uk-dropdown-navbar">
@@ -54,11 +55,11 @@ if (!empty($_SESSION['auth'])) {
                     <li><a href="#"><i class="uk-icon uk-icon-list"></i> View All Tickets</a></li>
                 </ul>
               </div>
-            </li>
+            </li>' : '' ).'
         </ul>
         <div class="uk-navbar-flip">
           <ul class="uk-navbar-nav">
-              <li class="uk-parent" data-uk-dropdown>
+            '.($messages ? '<li class="uk-parent" data-uk-dropdown>
               <a href="messages.php"><i class="uk-icon uk-icon-envelope"></i> Messages <i class="uk-icon-caret-down"></i></a>
               <div class="uk-dropdown uk-dropdown-navbar">
                 <ul class="uk-nav uk-nav-navbar">
@@ -68,8 +69,8 @@ if (!empty($_SESSION['auth'])) {
                     <li><a href="messages.php"><i class="uk-icon uk-icon-envelope-o"></i> '.getNewMessageCount(getAccountID($_SESSION['auth']['username'])).' new messages</a></li>
                 </ul>
               </div>
-            </li>
-            <li><a href="#my-id" data-uk-offcanvas><i class="uk-icon uk-icon-heart"></i> Friends</a></li>
+            </li>' : '').'
+            '.($friends ? '<li><a href="#my-id" data-uk-offcanvas><i class="uk-icon uk-icon-heart"></i> Friends</a></li>' : '').'
           </ul>
         </div>
       </nav>';
