@@ -287,7 +287,7 @@ function getCharacterGender($charid) {
   if (!empty($arrReturn)) {
     $temp = $arrReturn[0]['race'];
 
-    if ($temp == '3' || $temp == '5' || $temp == '6') {
+    if ($temp == '2' || $temp == '4' || $temp == '6' || $temp == '7') {
       return 'Female';
     }
     else {
@@ -613,7 +613,7 @@ function getTitle($charid) {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  if ($arrReturn[0]['title'] == 0) {
+  if (empty($arrReturn) || ($arrReturn[0]['title'] == 0)) {
     return ucwords(strtolower(str_replace('_',' ',$titles[206])));
   }
   if (!empty($arrReturn) && $arrReturn[0]['title'] != 0) {

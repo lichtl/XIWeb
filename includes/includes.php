@@ -838,14 +838,14 @@ $faces = array(
 );
 
 $races = array(
-  '0' => 'Hume',
   '1' => 'Hume',
-  '2' => 'Elvaan',
+  '2' => 'Hume',
   '3' => 'Elvaan',
-  '4' => 'Tarutaru',
+  '4' => 'Elvaan',
   '5' => 'Tarutaru',
-  '6' => 'Mithra',
-  '7' => 'Galka'
+  '6' => 'Tarutaru',
+  '7' => 'Mithra',
+  '8' => 'Galka'
 );
 
 ?>

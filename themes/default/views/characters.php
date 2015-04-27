@@ -86,6 +86,7 @@ else {
         <li><a href="#">Character</a></li>
         <li><a href="#">Stats</a></li>
         <li><a href="#">Reputation</a></li>
+        '.($show_currencies ? '<li><a href="#">Currency & Points</a></li>' : '').'
       </ul>
       
       <div class="uk-panel uk-panel-box" style="border-top: 0px; border-top-left-radius: 0px; border-top-right-radius: 0px;">
@@ -335,7 +336,75 @@ else {
                   <div class="uk-width-1-5"><span class="uk-text-bold">Jeuno:</span> '.getCharacterFame($char['charid'],'jeuno').'</div>
                 </div>
               </div>
-            </div>  
+            </div> 
+          </li>
+          <li>
+            <br />
+            <div class="uk-panel">
+              <br />
+            <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+              <h3 class="uk-panel-title"><i class="uk-icon uk-icon-money"></i> Currency and Points</h3>
+              <hr class="uk-panel-divider" />
+              <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon uk-icon-dollar"></i> Currencies</h3>
+                <hr class="uk-panel-divider" />
+                <div class="uk-grid uk-align-center uk-text-small">
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Beastmen Seal:</span> '.getCharacterCurrency($char['charid'],'beastmen_seal').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Kindred Seal:</span> '.getCharacterCurrency($char['charid'],'kindred_seal').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Ancient Beastcoin:</span> '.getCharacterCurrency($char['charid'],'ancient_beastcoin').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Jetton:</span> '.getCharacterCurrency($char['charid'],'jetton').'</div>
+                </div>
+              </div>
+              <br />
+              <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon uk-icon-dot-circle-o"></i> Points</h3>
+                <hr class="uk-panel-divider" />
+                <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+                  <h3 class="uk-panel-title"><i class="uk-icon uk-icon-dot-circle-o"></i> Conquest Points</h3>
+                  <hr class="uk-panel-divider" />
+                  <div class="uk-grid uk-align-center uk-text-small">
+                    <div class="uk-width-1-3"><span class="uk-text-bold">San D\'Oria Conquest:</span> '.getCharacterCurrency($char['charid'],'sandoria_cp').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Bastok Conquest:</span> '.getCharacterCurrency($char['charid'],'bastok_cp').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Windurst Conquest:</span> '.getCharacterCurrency($char['charid'],'windurst_cp').'</div>
+                  </div>
+                </div>
+                <br />
+                <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+                  <h3 class="uk-panel-title"><i class="uk-icon uk-icon-cutlery"></i> Guild Points</h3>
+                  <hr class="uk-panel-divider" />
+                  <div class="uk-grid uk-align-center uk-text-small">
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Fishing:</span> '.getCharacterCurrency($char['charid'],'guild_fishing').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Woodworking:</span> '.getCharacterCurrency($char['charid'],'guild_woodworking').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Smithing:</span> '.getCharacterCurrency($char['charid'],'guild_smithing').'</div>
+                  </div>
+                  <div class="uk-grid uk-align-center uk-text-small">
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Goldsmithing:</span> '.getCharacterCurrency($char['charid'],'guild_goldsmithing').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Weaving:</span> '.getCharacterCurrency($char['charid'],'guild_weaving').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Leathercraft:</span> '.getCharacterCurrency($char['charid'],'guild_leathercraft').'</div>
+                  </div>
+                  <div class="uk-grid uk-align-center uk-text-small">
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Bonecraft:</span> '.getCharacterCurrency($char['charid'],'guild_bonecraft').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Alchemy:</span> '.getCharacterCurrency($char['charid'],'guild_alchemy').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Cooking:</span> '.getCharacterCurrency($char['charid'],'guild_cooking').'</div>
+                  </div>
+                </div>
+                <br />
+                <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+                  <h3 class="uk-panel-title"><i class="uk-icon uk-icon-anchor"></i> Assault Points</h3>
+                  <hr class="uk-panel-divider" />
+                  <div class="uk-grid uk-align-center uk-text-small">
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Mamool Ja:</span> '.getCharacterCurrency($char['charid'],'mamool_assault_point').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Leujaoam Sanctum:</span> '.getCharacterCurrency($char['charid'],'leujaoam_assault_point').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Lebros Cavern:</span> '.getCharacterCurrency($char['charid'],'lebros_assault_point').'</div>
+                  </div>
+                  <div class="uk-grid uk-align-center uk-text-small">
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Periqia:</span> '.getCharacterCurrency($char['charid'],'periqia_assault_point').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Ilrusi Atoll:</span> '.getCharacterCurrency($char['charid'],'ilrusi_assault_point').'</div>
+                    <div class="uk-width-1-3"><span class="uk-text-bold">Nyzul Isle:</span> '.getCharacterCurrency($char['charid'],'nzul_isle_assault_point').'</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>  
       </div>
