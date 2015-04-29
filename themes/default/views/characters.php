@@ -196,14 +196,14 @@ else {
               </div>
               <div class="uk-grid uk-text-small">
                 <div class="uk-width-1-4"><span class="uk-text-bold">Corsair:</span> '.getJobLevel($char['charid'],'cor').'</div>
-                <div class="uk-width-1-4"><span class="uk-text-bold">Monk:</span> '.getJobLevel($char['charid'],'mnk').'</div>
                 <div class="uk-width-1-4"><span class="uk-text-bold">Puppetmaster:</span> '.getJobLevel($char['charid'],'pup').'</div>
                 <div class="uk-width-1-4"><span class="uk-text-bold">Dancer:</span> '.getJobLevel($char['charid'],'dnc').'</div>
+                <div class="uk-width-1-4"><span class="uk-text-bold">Scholar:</span> '.getJobLevel($char['charid'],'sch').'</div>
               </div>
               <div class="uk-grid uk-text-small">
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Scholar:</span> '.getJobLevel($char['charid'],'sch').'</div>
                   <div class="uk-width-1-4"><span class="uk-text-bold">Geomancer:</span> '.getJobLevel($char['charid'],'geo').'</div>
                   <div class="uk-width-1-4"><span class="uk-text-bold">Rune Fencer:</span> '.getJobLevel($char['charid'],'run').'</div>
+                  <div class="uk-width-1-4">&nbsp;</div>
                   <div class="uk-width-1-4">&nbsp;</div>
                 </div>
             </div>
