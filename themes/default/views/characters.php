@@ -113,7 +113,7 @@ else {
                 <div class="uk-width-1-2">
                   <div class="uk-text-bold">MP</div>
                   <div class="uk-progress uk-progress-striped uk-active uk-progress-primary">
-                    <div class="uk-progress-bar" style="width: 100%;">'.getCharacterHP($char['charid']).'</div>
+                    <div class="uk-progress-bar" style="width: 100%;">'.getCharacterMP($char['charid']).'</div>
                   </div>
                 </div>
               </div>
