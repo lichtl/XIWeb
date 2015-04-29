@@ -349,7 +349,7 @@ else {
                 <h3 class="uk-panel-title"><i class="uk-icon uk-icon-dollar"></i> Currencies</h3>
                 <hr class="uk-panel-divider" />
                 <div class="uk-grid uk-align-center uk-text-small">
-                  <div class="uk-width-1-4"><span class="uk-text-bold">Beastmen Seal:</span> '.getCharacterCurrency($char['charid'],'beastmen_seal').'</div>
+                  <div class="uk-width-1-4"><span class="uk-text-bold">Beastman Seal:</span> '.getCharacterCurrency($char['charid'],'beastman_seal').'</div>
                   <div class="uk-width-1-4"><span class="uk-text-bold">Kindred Seal:</span> '.getCharacterCurrency($char['charid'],'kindred_seal').'</div>
                   <div class="uk-width-1-4"><span class="uk-text-bold">Ancient Beastcoin:</span> '.getCharacterCurrency($char['charid'],'ancient_beastcoin').'</div>
                   <div class="uk-width-1-4"><span class="uk-text-bold">Jetton:</span> '.getCharacterCurrency($char['charid'],'jetton').'</div>
