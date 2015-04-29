@@ -160,33 +160,33 @@ if (defined('INSTALLED')) {
           switch ($race) {
             case 'Hume':
               if ($gender == "Male") {
-                $rc = 0;
+                $rc = 1;
               }
               else {
-                $rc = 1;
+                $rc = 2;
               }
               break;
             case 'Elvaan':
               if ($gender == "Male") {
-                $rc = 2;
+                $rc = 3;
               }
               else {
-                $rc = 3;
+                $rc = 4;
               }
               break;
             case 'Tarutaru':
               if ($gender == "Male") {
-                $rc = 4;
+                $rc = 5;
               }
               else {
-                $rc = 5;
+                $rc = 6;
               }
               break;
             case 'Mithra': // Mithra is only female, so we don't need to check the gender
-              $rc = 6;
+              $rc = 7;
               break;
             case 'Galka': // Galka is only male, so we don't need to check the gender
-              $rc = 7;
+              $rc = 8;
               break;
           }
           
@@ -312,9 +312,10 @@ if (defined('INSTALLED')) {
               $na = 2;
               break;
           }
-          
+         
           $accid = getAccountID($_SESSION['auth']['username']);
-          
+
+          // TODO: Add in calculations to see if they have reached their maximum number of characters
           if (!createCharacter($accid,$charname,$fc,$rc,$sz,$na,$jo) != TRUE) {
             $_SESSION['errors'][] = $lang['error']['create_character']['creation_error'];
             #var_dump(createCharacter($accid,$charname,$fc,$rc,$sz,$na,$jo));
@@ -322,6 +323,7 @@ if (defined('INSTALLED')) {
           else {
             header("Location: characters.php");
           }
+
         }
       }
     }

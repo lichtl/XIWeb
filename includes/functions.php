@@ -887,12 +887,26 @@ function getServerUptime() {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  if (!empty($arrReturn)) {
-    return dateDiff(date('Y-m-d',time()),date('Y-m-d',$arrReturn[0]['value']));
-
+  if (empty($arrReturn)) {
+    $strSQL = "INSERT INTO server_variables (`name`,`value`) VALUES ('server_start_time','".time()."')";
+    $statement = $db->prepare($strSQL);
+    if (!$statement->execute()) {
+      watchdog($statement->errorInfo(),'SQL');
+    }
+    return '0 seconds';
   }
   else {
-    return '0 seconds';
+    if ($arrReturn[0]['value'] == 0) {
+      return '0 seconds';
+    }
+    else {
+      if (dateDiff(date('Y-m-d',time()),date('Y-m-d',$arrReturn[0]['value']) < 1)) {
+        return '0 seconds';
+      }
+      else {
+        return dateDiff(date('Y-m-d',time()),date('Y-m-d',$arrReturn[0]['value']));
+      }
+    }
   }
 }
 

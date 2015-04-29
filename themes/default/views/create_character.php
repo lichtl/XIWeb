@@ -39,19 +39,19 @@ $output .= '
           <div class="uk-form-row">
             <label class="uk-form-label '.(!empty($_SESSION['validation']['validation']['race']) ? 'uk-text-danger' : '').'">Race*:</label>
             <div class="uk-form-controls">
-              <input type="radio" name="race" value="Hume" '.(!empty($race) && ($race == 'Hume') ? 'checked' : '').' /><label> Hume</label><br>
-              <input type="radio" name="race" value="Elvaan" '.(!empty($race) && ($race == 'Elvaan') ? 'checked' : '').' /><label> Elvaan</label><br>
-              <input type="radio" name="race" value="Tarutaru" '.(!empty($race) && ($race == 'Tarutaru') ? 'checked' : '').' /><label> Tarutaru</label><br>
-              <input type="radio" name="race"  value="Mithra" '.(!empty($race) && ($race == 'Mithra') ? 'checked' : '').' /><label> Mithra</label><br>
-              <input type="radio" name="race"  value="Galka" '.(!empty($race) && ($race == 'Galka') ? 'checked' : '').' /><label> Galka</label>
+              <input type="radio" name="race" value="Hume" '.(!empty($race) && ($race == 'Hume') ? 'checked' : '').' /><label>Hume</label><br>
+              <input type="radio" name="race" value="Elvaan" '.(!empty($race) && ($race == 'Elvaan') ? 'checked' : '').' /><label>Elvaan</label><br>
+              <input type="radio" name="race" value="Tarutaru" '.(!empty($race) && ($race == 'Tarutaru') ? 'checked' : '').' /><label>Tarutaru</label><br>
+              <input type="radio" name="race"  value="Mithra" '.(!empty($race) && ($race == 'Mithra') ? 'checked' : '').' /><label>Mithra</label><br>
+              <input type="radio" name="race"  value="Galka" '.(!empty($race) && ($race == 'Galka') ? 'checked' : '').' /><label>Galka</label>
               '.(!empty($_SESSION['validation']['validation']['race']) ? '<br /><span class="uk-form-help-inline uk-text-danger"><i class="uk-icon uk-icon-times-circle"></i> '.$_SESSION['validation']['validation']['race'].'</span>' : '').'
             </div>
           </div>
           <div class="uk-form-row">
             <label class="uk-form-label '.(!empty($_SESSION['validation']['validation']['gender']) ? 'uk-text-danger' : '').'"">Gender*:</label>
             <div class="uk-form-controls">
-              <input type="radio" name="gender" value="Male"  '.(!empty($gender) && ($gender == 'Male') ? 'checked' : '').' /><label> Male</label><br>
-              <input type="radio" name="gender" value="Female"  '.(!empty($gender) && ($gender == 'Female') ? 'checked' : '').'  /><label> Female</label>
+              <input type="radio" name="gender" value="Male" '.(!empty($gender) && ($gender == 'Male') ? 'checked' : '').' /><label> Male</label><br>
+              <input type="radio" name="gender" value="Female" '.(!empty($gender) && ($gender == 'Female') ? 'checked' : '').'  /><label> Female</label>
             '.(!empty($_SESSION['validation']['validation']['gender']) ? '<br /><span class="uk-form-help-inline uk-text-danger"><i class="uk-icon uk-icon-times-circle"></i> '.$_SESSION['validation']['validation']['gender'].'</span>' : '').'
             </div>
           </div>
@@ -134,7 +134,7 @@ $output .= '
                 </div>
                 <div class="uk-width-1-4">
                   <input type="radio" name="job" value="Bard" '.(!empty($job) && ($job == 'Bard') ? 'checked' : '').' /><label> Bard</label><br>
-                  <input type="radio" name="job" vakue="Ranger" '.(!empty($job) && ($job == 'Ranger') ? 'checked' : '').' /><label> Ranger</label><br>
+                  <input type="radio" name="job" value="Ranger" '.(!empty($job) && ($job == 'Ranger') ? 'checked' : '').' /><label> Ranger</label><br>
                   <input type="radio" name="job" value="Samurai" '.(!empty($job) && ($job == 'Samurai') ? 'checked' : '').' /><label> Samurai</label>
                 </div>
               </div>
