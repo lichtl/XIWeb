@@ -99,7 +99,7 @@ else {
   ';
   // Need to generate the code to make the correct image display here based on the characters race/gender and face/hair combination.
   $output .= '
-              <div class="uk-text-center"><img src="/themes/default/images/portraits/'.getCharacterRace($char['charid']).getCharacterGender($char['charid']).getCharacterAppearance($char['charid']).'.jpg" /></div>
+              <div class="uk-text-center"><img src="themes/default/images/portraits/'.getCharacterRace($char['charid']).getCharacterGender($char['charid']).getCharacterAppearance($char['charid']).'.jpg" /></div>
   ';
   $output .= '
               <h3 class="uk-panel-title uk-text-center">'.strtoupper(getCharMJob($char['charid'])).getJobLevel($char['charid'],getCharMJob($char['charid'])).(getCharSJob($char['charid']) == true ? '/'.strtoupper(getCharSJob($char['charid'])).getJobLevel($char['charid'],getCharSJob($char['charid'])).'' : '') .'</h3><br />
